@@ -1,0 +1,38 @@
+/*::::::::::Topo da Página::::::::::*/
+.barraTopo{
+    width: 100vw;
+    height: 69px;
+    background-color: #EC362D;
+    
+}
+.tituloTopo{
+    color: white;
+    font-size: 37px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.teste{
+    font-size: 55px;
+}
+/*::::::::::Estilos Gerais::::::::::*/
+*{
+    font-family: 'Roboto', sans-serif;
+}
