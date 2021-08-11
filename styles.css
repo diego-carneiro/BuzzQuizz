@@ -1,15 +1,79 @@
 /*::::::::::Topo da Página::::::::::*/
 .barraTopo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100vw;
     height: 69px;
     background-color: #EC362D;
-    
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .tituloTopo{
     color: white;
     font-size: 37px;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
+}
+/*::::::::::Corpo da Página::::::::::*/
+
+/*::::::::::Criação de Quiz::::::::::*/
+.corpoPagina{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    margin-top: 10px;
+    background-color:white;
+}
+.criarQuizz{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 1051px;
+    height: 181px;
+    border-radius: 5px;
+    border: 1px dashed #D5D5D5;
+}
+.botãoDeCriação{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 250px;
+    height: 107px;
+}
+.avisoQuizz{
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    color: #B9B9B9;
+    text-align: center;
+    margin-bottom: 10px;
+}
+button{
+    width: 136px;
+    height: 40px;
+    font-size: 21px;
+    color: #EC362D;
+    background-color: white;
+    border-radius: 50px;
+    border: 1px dashed #EC362D;
+}
+/*::::::::::Todos os Quizzes::::::::::*/
+.caixaDeQuizz{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 1050px;
+    height: 374px;
+    background-color: yellow;
+}
+.quizzesDeOutros{
+    width: 340px;
+    height: 181px;
+    border-radius: 5px;
+    background-color: violet;
 }
 
 
