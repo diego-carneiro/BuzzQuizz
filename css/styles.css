@@ -61,7 +61,7 @@
 .caixaDeQuizz{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     width: 1050px;
     height: 374px;
     background-color: yellow;
@@ -69,9 +69,33 @@
 .quizzesDeOutros{
     width: 340px;
     height: 181px;
-    border-radius: 5px;
     background-color: violet;
+    position: relative;
 }
+
+.quizzesDeOutros img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.sombraImagem {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    box-shadow: inset 0 -50px 60px rgba(0, 0, 0, 0.9);
+    position: absolute;
+    top: 0;
+}
+
+.quizzesDeOutros span{
+    position: absolute;
+    bottom: 20px;
+    left: 15px;
+    color: white;
+    z-index: 1;
+}
+
 /*:::::::::::Tela de Criação de Quizz 1::::::::::*/
 .corpoPaginaCriação_1{
     display: flex;
