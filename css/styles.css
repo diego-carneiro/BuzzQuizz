@@ -72,8 +72,8 @@
     border-radius: 5px;
     background-color: violet;
 }
-/*:::::::::::Tela de Criação de Quizz::::::::::*/
-.corpoPaginaCriação{
+/*:::::::::::Tela de Criação de Quizz 1::::::::::*/
+.corpoPaginaCriação_1{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -103,6 +103,17 @@
     background-color: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05)
 }
+#inputBox{
+    width: 564px;
+    height: 46px;
+    margin-bottom: 10px;
+    margin-left: 15px;
+    font-size: 19px;
+    font-style: italic;
+    border: 1px solid #D1D1D1;
+    border-radius: 5px;
+  
+}
 .botaoDeProsseguir{
     width: 370px;
     height: 54px;
@@ -126,6 +137,12 @@
     border-radius: 50px;
     border: 1px dashed #EC362D;
 }
+/*:::::::::::Tela de Criação de Quizz 1::::::::::*/
+
+/*:::::::::::Tela de Criação de Quizz 2::::::::::*/
+
+
+/*:::::::::::Tela de Criação de Quizz 2::::::::::*/
 
 /*::::::::::Estilos Gerais::::::::::*/
 body {
