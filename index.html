@@ -13,18 +13,19 @@
 
 </head>
 <body>
-    <div class="barraTopo"> 
-        <p class="tituloTopo">BuzzQuizz</p>
-    </div>
-    <div class= corpoPagina>
+<!--::::::::::Tela Inicial::::::::::-->
+
+<div class="barraTopo"> 
+    <p class="tituloTopo">BuzzQuizz</p>
+</div>
+    <div class= corpoPaginaInicial>
         <div class="criarQuizz">
-            <div class="botãoDeCriação">
+            <div class="botãoDeCriação" onclick="subirCriação()">
                 <p class="avisoQuizz">Você não criou nenhum quizz ainda:(</p>      
-                <button>Criar Quizz</button>
+                <button class="criar">Criar Quizz</button>
             </div>
             
         </div>
-        
         <div class="caixaDeQuizz">
             <div class="quizzesDeOutros"></div>
             <div class="quizzesDeOutros"></div>
@@ -35,8 +36,35 @@
 
         </div>
     </div>
+    
+<!-- ::::::::::Tela Inicial:::::::::: -->
 
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<!-- ::::::::::Tela de Criação:::::::::: -->
+
+<div class="corpoPaginaCriação">
+    <div class="conteudoCriação">
+        <p class="comece">Comece pelo começo</p>
+        <div class="dadosQuizz_1">
+            
+        </div>
+        <div class="botaoDeProsseguir">
+            <p class="textoBotaoProsseguir">Prosseguir para criar perguntas</p>
+        </div>
+        <div class="botãoDeVoltar" onclick="retornarTelaInicial()">
+            <button class="voltar">Voltar</button>
+        </div>
+    </div>    
+</div>
+
+<!-- <div class="botãoDeCriação" onclick="subirCriação()">
+    <p class="avisoQuizz">Você não criou nenhum quizz ainda:(</p>      
+    <button class="criar">Criar Quizz</button>
+</div> -->
+   
+    
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="/js/script.js"></script>
 </body>
 </html>

@@ -19,3 +19,22 @@ function renderizarQuizes(quizzes) {
         console.log(quizzes.data[i].title) //título do quizz
     }
 }
+
+
+/*::::::::::Trocas entre Telas::::::::::*/
+
+function subirCriação(){
+    let corpoPagInicial = document.querySelector(".corpoPaginaInicial");
+    let corpoPagCriação = document.querySelector(".corpoPaginaCriação");
+
+    corpoPagInicial.classList.add('displayNone');
+    corpoPagCriação.classList.remove('displayNone');
+}
+function retornarTelaInicial(){
+    let corpoPagInicial = document.querySelector(".corpoPaginaInicial");
+    let corpoPagCriação = document.querySelector(".corpoPaginaCriação");
+    corpoPagInicial.classList.remove('displayNone');
+    corpoPagCriação.classList.add('displayNone');
+}
+/*::::::::::Trocas entre Telas::::::::::*/
+
