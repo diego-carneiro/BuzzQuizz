@@ -181,6 +181,11 @@
 /*:::::::::::Tela de Criação de Quizz 2::::::::::*/
 
 /*::::::::::Estilos Gerais::::::::::*/
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
 }
