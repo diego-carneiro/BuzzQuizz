@@ -20,7 +20,7 @@
 </div>
     <div class= corpoPaginaInicial>
         <div class="criarQuizz">
-            <div class="botãoDeCriação" onclick="subirCriação()">
+            <div class="botãoDeCriação" onclick="subirCriação_1()">
                 <p class="avisoQuizz">Você não criou nenhum quizz ainda:(</p>      
                 <button class="criar">Criar Quizz</button>
             </div>
@@ -41,9 +41,9 @@
 
 <!-- ::::::::::Tela de Criação 1:::::::::: -->
 
-<div class="corpoPaginaCriação_1">
+<div class="corpoPaginaCriação criação_1">
     <div class="conteudoCriação">
-        <p class="comece">Comece pelo começo</p>
+        <p class="instrução">Comece pelo começo</p>
         <div class="dadosQuizz_1">
             <input placeholder="   Título do seu quizz" id="inputBox">
             <input placeholder="   URL da imagem do seu quizz" id="inputBox">
@@ -51,7 +51,7 @@
             <input placeholder="   Quantidade de níveis do quizz" id="inputBox">
 
         </div>
-        <div class="botaoDeProsseguir">
+        <div class="botaoDeProsseguir" onclick="subirCriação_2()">
             <p class="textoBotaoProsseguir">Prosseguir para criar perguntas</p>
         </div>
         <div class="botãoDeVoltar" onclick="retornarTelaInicial()">
@@ -61,7 +61,46 @@
 </div>
 
 <!-- ::::::::::Tela de Criação 2:::::::::: -->
-<div class="corpoPaginaCriação_2"
+
+<div class="corpoPaginaCriação criação_2">
+    <div class="conteudoCriação">
+        <p class="instrução">Crie suas perguntas</p>
+        <div class="dadosQuizz_2">
+            <p class="inputTitle">Pergunta 1</p>
+            <div class="inputBox">
+                <input placeholder="   Texto da Pergunta" id="inputBox">
+                <input placeholder="   Cor de fundo da pergunta" id="inputBox">
+            </div>
+            <p class="inputTitle">Resposta correta</p>
+            <div class="inputBox">
+                <input placeholder="   Resposta correta" id="inputBox">
+                <input placeholder="   URL da imagem" id="inputBox">
+            </div>
+            <p class="inputTitle">Respostas Incorretas</p>
+            <div class="inputBox">
+                <input placeholder="   Resposta incorreta 1" id="inputBox">
+                <input placeholder="   URL da imagem 1" id="inputBox">
+            </div>
+            <div class="inputBox">
+                <input placeholder="   Resposta incorreta 2" id="inputBox">
+                <input placeholder="   URL da imagem 2" id="inputBox">
+            </div>
+            <div class="inputBox">
+                <input placeholder="   Resposta incorreta 3" id="inputBox">
+                <input placeholder="   URL da imagem 3" id="inputBox">
+            </div>
+        </div>
+        <div class="botaoDeProsseguir">
+            <p class="textoBotaoProsseguir">Prosseguir para criar níveis</p>
+        </div>
+        <div class="botãoDeVoltar" onclick="retornarTelaInicial()">
+            <button class="voltar">Voltar</button>
+        </div>
+    </div>
+</div>
+<!-- ::::::::::Tela de Criação 3:::::::::: -->
+<div class="corpoPaginaCriação criação_2"></div>
+
 
 
 

@@ -73,7 +73,7 @@
     background-color: violet;
 }
 /*:::::::::::Tela de Criação de Quizz 1::::::::::*/
-.corpoPaginaCriação_1{
+.corpoPaginaCriação{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -89,9 +89,10 @@
     flex-direction: column;
     align-items: center;
     width: 600px;
-    height: 1000px;
+    height: 1200px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
 }
-.comece{
+.instrução{
     font-size: 23px;
     font-weight: bold;
     margin-top: 70px;
@@ -140,7 +141,17 @@
 /*:::::::::::Tela de Criação de Quizz 1::::::::::*/
 
 /*:::::::::::Tela de Criação de Quizz 2::::::::::*/
-
+.dadosQuizz_2{
+    width: 600px;
+    height: 825px;
+}
+.inputTitle{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 15px;
+    margin-bottom: 12px;
+    margin-top: 28px;
+}
 
 /*:::::::::::Tela de Criação de Quizz 2::::::::::*/
 

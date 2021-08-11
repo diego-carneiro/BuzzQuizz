@@ -23,18 +23,27 @@ function renderizarQuizes(quizzes) {
 
 /*::::::::::Trocas entre Telas::::::::::*/
 
-function subirCriação(){
+function subirCriação_1(){
     let corpoPagInicial = document.querySelector(".corpoPaginaInicial");
-    let corpoPagCriação = document.querySelector(".corpoPaginaCriação");
+    let criação_1 = document.querySelector(".criação_1");
 
     corpoPagInicial.classList.add('displayNone');
-    corpoPagCriação.classList.remove('displayNone');
+    criação_1.classList.remove('displayNone');
+}
+function subirCriação_2(){
+    let criação_1 = document.querySelector(".criação_1");
+    let criação_2 = document.querySelector(".criação_2");
+
+    criação_1.classList.add('displayNone');
+
 }
 function retornarTelaInicial(){
     let corpoPagInicial = document.querySelector(".corpoPaginaInicial");
-    let corpoPagCriação = document.querySelector(".corpoPaginaCriação");
+    let criação_1 = document.querySelector(".corpoPaginaCriação");
     corpoPagInicial.classList.remove('displayNone');
-    corpoPagCriação.classList.add('displayNone');
+    criação_1.classList.add('displayNone');
 }
+
+
 /*::::::::::Trocas entre Telas::::::::::*/
 
