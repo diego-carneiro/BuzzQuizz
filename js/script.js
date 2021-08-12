@@ -89,3 +89,23 @@ function subirCriação_4(){
 
 /*:::::Fim de trocas entre telas para criação:::::*/
 
+
+/*:::::Adição de Níveis:::::*/
+
+// function segundoNivel(){
+//     let conteudoCriação = document.querySelector(".conteudoCriação") 
+//     let caixaDeNível = document.querySelector(".segundoNivel");
+
+    
+//     caixaDeNível.classList.add('displayNone');
+//     conteudoCriação.innerHTML += `<div class="caixaDeNiveis">
+//     <p class="inputTitle">Nível 1</p>
+//     <input placeholder="   Título do nível" id="inputBox">
+//     <input placeholder="   % de acerto mínima" id="inputBox">
+//     <input placeholder="   URL da imagem do nível" id="inputBox">
+//     <input placeholder="   Descrição do nível" id="inputBox">
+// </div>` 
+// }
+
+/*:::::Fim da adição de Níveis:::::*/
+
