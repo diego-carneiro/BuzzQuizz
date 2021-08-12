@@ -214,6 +214,23 @@
 
 
 /*:::::::::::Fim da Tela de Criação de Quizz 3::::::::::*/
+
+/*::::::::::Página de um Quizz (joão)::::::::::*/
+.pagina-de-um-quizz{
+    width: 100%;
+    height: 2000px;
+    background-color: coral;
+}
+
+.container-foto-de-capa-quizz{
+    height: 277px;
+    width: 100%;
+    background-color: green;
+}
+
+
+/*::::::::::Fim de Página de um Quizz (joão)::::::::::*/
+
 /*::::::::::Estilos Gerais::::::::::*/
 
 * {

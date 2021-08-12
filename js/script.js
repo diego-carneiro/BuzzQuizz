@@ -5,6 +5,8 @@ const telaCriação_2 = document.querySelector(".criação_2");
 const telaCriação_3 = document.querySelector(".criação_3");
 const telaCriação_4 = document.querySelector(".criação_4"); 
 
+const paginaDeUmQuizz = document.querySelector('.pagina-de-um-quizz');
+
 
 /*:::::Fim do HTML das telas:::::*/
 
@@ -33,7 +35,7 @@ function renderizarQuizes(quizzes) {
     } 
     
     for (i=0; i < quizzes.data.length; i ++){
-        caixaDeQuizz.innerHTML += `<div class="quizzesDeOutros" onclick="testeOnclick()">
+        caixaDeQuizz.innerHTML += `<div class="quizzesDeOutros" onclick="testeOnclick(this); abrirQuizz(this)">
         <img src="${quizzes.data[i].image}">
         <span>${quizzes.data[i].title}</span>
         <div class="sombraImagem"></div>
@@ -42,9 +44,25 @@ function renderizarQuizes(quizzes) {
 
 }
 
-function testeOnclick() {
-    alert("isso foi clicado");
+function testeOnclick(elemento) {
+    alert(elemento.innerHTML);
 }
+
+/*:::::Trocas entre telas Abrir Quizz (joão):::::*/
+
+function abrirQuizz(elemento) {
+    alert('abrir quizz');
+
+    console.log(elemento.innerHTML)
+
+    pagInicial.innerHTML = `<div class="pagina-de-um-quizz">
+    <div class="container-foto-de-capa-quizz">
+
+    </div>
+</div>`
+}
+
+/*:::::Fim da Trocas entre telas Abrir Quizz (joão):::::*/
 
 /*:::::Trocas entre telas para criação:::::*/
 function estadoInicial(){
@@ -53,6 +71,8 @@ function estadoInicial(){
     telaCriação_2.classList.add('displayNone');
     telaCriação_3.classList.add('displayNone');
     telaCriação_4.classList.add('displayNone');
+
+    paginaDeUmQuizz.classList.add('displayNone');
 }
 estadoInicial();
 

@@ -15,132 +15,133 @@
 </head>
 
 <body>
-<!-- :::::Barra do Topo::::: -->
+    <!-- :::::Barra do Topo::::: -->
     <div class="barraTopo">
         <p class="tituloTopo">BuzzQuizz</p>
     </div>
-<!-- :::::Fim da Barra de Topo::::: -->
-<!-- :::::Corpo da Página Inicial::::: -->
+    <!-- :::::Fim da Barra de Topo::::: -->
+    <!-- :::::Corpo da Página Inicial::::: -->
     <div class=corpoPaginaInicial>
         <div class="criarQuizz">
             <div class="botãoDeCriação" onclick="subirCriação_1()">
-                <p class="avisoQuizz">Você não criou nenhum quizz ainda:(</p>      
+                <p class="avisoQuizz">Você não criou nenhum quizz ainda:(</p>
                 <button class="criar">Criar Quizz</button>
-            </div>  
-        </div> 
-        <div class="caixaDeQuizz">  
+            </div>
+        </div>
+        <div class="caixaDeQuizz">
         </div>
     </div>
-<!-- :::::Fim do Corpo da Página Inicial::::: -->
+    <!-- :::::Fim do Corpo da Página Inicial::::: -->
 
-<!-- :::::Tela de Criação 1::::: -->
-<div class="corpoPaginaCriação criação_1">
-    <div class="conteudoCriação">
-        <p class="instrução">Comece pelo começo</p>
-        <div class="dadosQuizz_1">
-            <input placeholder="   Título do seu quizz" id="inputBox">
-            <input placeholder="   URL da imagem do seu quizz" id="inputBox">
-            <input placeholder="   Quantidade de perguntas do quizz" id="inputBox">
-            <input placeholder="   Quantidade de níveis do quizz" id="inputBox">
+    <!-- :::::Tela de Criação 1::::: -->
+    <div class="corpoPaginaCriação criação_1">
+        <div class="conteudoCriação">
+            <p class="instrução">Comece pelo começo</p>
+            <div class="dadosQuizz_1">
+                <input placeholder="   Título do seu quizz" id="inputBox">
+                <input placeholder="   URL da imagem do seu quizz" id="inputBox">
+                <input placeholder="   Quantidade de perguntas do quizz" id="inputBox">
+                <input placeholder="   Quantidade de níveis do quizz" id="inputBox">
 
-        </div>
-        <div class="botaoDeProsseguir" onclick="subirCriação_2()">
-            <p class="textoBotaoProsseguir">Prosseguir para criar perguntas</p>
-        </div>
-        <div class="botãoDeVoltar" onclick="estadoInicial()">
-            <button class="voltar">Voltar</button>
-        </div>
-    </div>    
-</div>
-<!-- :::::Fim da Tela de Criação 1::::: -->
-<!-- :::::Tela de Criação 2::::: -->
-<div class="corpoPaginaCriação criação_2">
-    <div class="conteudoCriação">
-        <p class="instrução">Crie suas perguntas</p>
-        <div class="dadosQuizz_2">
-            <p class="inputTitle">Pergunta 1</p>
-            <div class="inputBox">
-                <input placeholder="   Texto da Pergunta" id="inputBox">
-                <input placeholder="   Cor de fundo da pergunta" id="inputBox">
             </div>
-            <p class="inputTitle">Resposta correta</p>
-            <div class="inputBox">
-                <input placeholder="   Resposta correta" id="inputBox">
-                <input placeholder="   URL da imagem" id="inputBox">
+            <div class="botaoDeProsseguir" onclick="subirCriação_2()">
+                <p class="textoBotaoProsseguir">Prosseguir para criar perguntas</p>
             </div>
-            <p class="inputTitle">Respostas Incorretas</p>
-            <div class="inputBox">
-                <input placeholder="   Resposta incorreta 1" id="inputBox">
-                <input placeholder="   URL da imagem 1" id="inputBox">
+            <div class="botãoDeVoltar" onclick="estadoInicial()">
+                <button class="voltar">Voltar</button>
             </div>
-            <div class="inputBox">
-                <input placeholder="   Resposta incorreta 2" id="inputBox">
-                <input placeholder="   URL da imagem 2" id="inputBox">
-            </div>
-            <div class="inputBox">
-                <input placeholder="   Resposta incorreta 3" id="inputBox">
-                <input placeholder="   URL da imagem 3" id="inputBox">
-            </div>
-        </div>
-        <div class="botaoDeProsseguir" onclick="subirCriação_3()">
-            <p class="textoBotaoProsseguir">Prosseguir para criar níveis</p>
-        </div>
-        <div class="botãoDeVoltar" onclick="estadoInicial()">
-            <button class="voltar">Voltar</button>
         </div>
     </div>
-</div>
-<!-- :::::Fim da Tela de Criação 2 (Diego)::::: -->
-<!-- :::::Tela de Criação 3 (Diego)::::: -->
-<div class="corpoPaginaCriação criação_3">
-    <div class="conteudoCriação">
-        <p class="instrução">Agora, decida os níveis</p>
-        <div class="caixaDeNiveis">
-            <p class="inputTitle">Nível 1</p>
-            <input placeholder="   Título do nível" id="inputBox">
-            <input placeholder="   % de acerto mínima" id="inputBox">
-            <input placeholder="   URL da imagem do nível" id="inputBox">
-            <input placeholder="   Descrição do nível" id="inputBox">
-        </div>
-        <div class="caixaDeAdição">
-            <p class="addTitle">Nível 2</p>
-            <img class="pencil" src="pencil.png"/>
-        </div>
-        <div class="caixaDeAdição">
-            <p class="addTitle">Nível 3</p>
-            <img class="pencil" src="pencil.png"/>
-        </div>
-        <div class="botaoDeProsseguir" onclick="subirCriação_4()">
-            <p class="textoBotaoProsseguir">Finalizar Quizz</p>
-        </div>
-        <div class="botãoDeVoltar" onclick="estadoInicial()">
-            <button class="voltar">Voltar</button>
-        </div>
-    </div>
-</div>
-<!-- :::::Fim da Tela de Criação 3 (Diego)::::: -->
-
-<!-- :::::Tela de Criação 4 (Diego):::::-->
-<div class="corpoPaginaCriação criação_4">
-    <div class="conteudoCriação">
-        <p class="instrução">Seu quizz está pronto!</p>
-        <div class="botaoDeProsseguir">
-            <p class="textoBotaoProsseguir">Acessar Quizz</p>
-        </div>
-        <div class="botãoDeVoltar" onclick="estadoInicial()">
-            <button class="voltar">Voltar</button>
+    <!-- :::::Fim da Tela de Criação 1::::: -->
+    <!-- :::::Tela de Criação 2::::: -->
+    <div class="corpoPaginaCriação criação_2">
+        <div class="conteudoCriação">
+            <p class="instrução">Crie suas perguntas</p>
+            <div class="dadosQuizz_2">
+                <p class="inputTitle">Pergunta 1</p>
+                <div class="inputBox">
+                    <input placeholder="   Texto da Pergunta" id="inputBox">
+                    <input placeholder="   Cor de fundo da pergunta" id="inputBox">
+                </div>
+                <p class="inputTitle">Resposta correta</p>
+                <div class="inputBox">
+                    <input placeholder="   Resposta correta" id="inputBox">
+                    <input placeholder="   URL da imagem" id="inputBox">
+                </div>
+                <p class="inputTitle">Respostas Incorretas</p>
+                <div class="inputBox">
+                    <input placeholder="   Resposta incorreta 1" id="inputBox">
+                    <input placeholder="   URL da imagem 1" id="inputBox">
+                </div>
+                <div class="inputBox">
+                    <input placeholder="   Resposta incorreta 2" id="inputBox">
+                    <input placeholder="   URL da imagem 2" id="inputBox">
+                </div>
+                <div class="inputBox">
+                    <input placeholder="   Resposta incorreta 3" id="inputBox">
+                    <input placeholder="   URL da imagem 3" id="inputBox">
+                </div>
+            </div>
+            <div class="botaoDeProsseguir" onclick="subirCriação_3()">
+                <p class="textoBotaoProsseguir">Prosseguir para criar níveis</p>
+            </div>
+            <div class="botãoDeVoltar" onclick="estadoInicial()">
+                <button class="voltar">Voltar</button>
+            </div>
         </div>
     </div>
-</div>
-<!-- ::::::::::Fim da Tela de Criação 4 (Diego):::::::::: -->
+    <!-- :::::Fim da Tela de Criação 2 (Diego)::::: -->
+    <!-- :::::Tela de Criação 3 (Diego)::::: -->
+    <div class="corpoPaginaCriação criação_3">
+        <div class="conteudoCriação">
+            <p class="instrução">Agora, decida os níveis</p>
+            <div class="caixaDeNiveis">
+                <p class="inputTitle">Nível 1</p>
+                <input placeholder="   Título do nível" id="inputBox">
+                <input placeholder="   % de acerto mínima" id="inputBox">
+                <input placeholder="   URL da imagem do nível" id="inputBox">
+                <input placeholder="   Descrição do nível" id="inputBox">
+            </div>
+            <div class="caixaDeAdição">
+                <p class="addTitle">Nível 2</p>
+                <img class="pencil" src="pencil.png" />
+            </div>
+            <div class="caixaDeAdição">
+                <p class="addTitle">Nível 3</p>
+                <img class="pencil" src="pencil.png" />
+            </div>
+            <div class="botaoDeProsseguir" onclick="subirCriação_4()">
+                <p class="textoBotaoProsseguir">Finalizar Quizz</p>
+            </div>
+            <div class="botãoDeVoltar" onclick="estadoInicial()">
+                <button class="voltar">Voltar</button>
+            </div>
+        </div>
+    </div>
+    <!-- :::::Fim da Tela de Criação 3 (Diego)::::: -->
 
-<!-- ::::::::::Página de um Quizz (joão):::::::::: -->
+    <!-- :::::Tela de Criação 4 (Diego):::::-->
+    <div class="corpoPaginaCriação criação_4">
+        <div class="conteudoCriação">
+            <p class="instrução">Seu quizz está pronto!</p>
+            <div class="botaoDeProsseguir">
+                <p class="textoBotaoProsseguir">Acessar Quizz</p>
+            </div>
+            <div class="botãoDeVoltar" onclick="estadoInicial()">
+                <button class="voltar">Voltar</button>
+            </div>
+        </div>
+    </div>
+    <!-- ::::::::::Fim da Tela de Criação 4 (Diego):::::::::: -->
 
+    <!-- ::::::::::Página de um Quizz (joão):::::::::: -->
+    
 
-<!-- ::::::::::Fim de Página de um Quizz (joão):::::::::: -->
+    <!-- ::::::::::Fim de Página de um Quizz (joão):::::::::: -->
 
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="/js/script.js"></script>
 </body>
+
 </html>
