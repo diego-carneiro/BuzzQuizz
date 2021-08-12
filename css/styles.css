@@ -1,5 +1,5 @@
 /*::::::::::Topo da Página::::::::::*/
-.barraTopo{
+.barra-topo{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -218,18 +218,17 @@
 /*::::::::::Página de um Quizz (joão)::::::::::*/
 .pagina-de-um-quizz{
     width: 100%;
-    height: 2000px;
-    background-color: coral;
+
 }
 
 .container-foto-de-capa-quizz{
     height: 277px;
     width: 100%;
-    background-color: green;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 20px;
 }
 
 .container-foto-de-capa-quizz img{
@@ -245,6 +244,13 @@
     font-size: 38px;
 }
 
+.container-pergunta-individual{
+    width: 759px;
+    height: 676px;
+    margin-bottom: 42px;
+    background-color: yellow;
+}
+
 /*::::::::::Fim de Página de um Quizz (joão)::::::::::*/
 
 /*::::::::::Estilos Gerais::::::::::*/
@@ -255,6 +261,7 @@
 
 body {
     font-family: 'Roboto', sans-serif;
+    background-color: #fafafa;
 }
 
 /*::::::::::Classes de Suporte::::::::::*/

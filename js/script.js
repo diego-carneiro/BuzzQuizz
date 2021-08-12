@@ -30,7 +30,7 @@ function renderizarQuizes(quizzes) {
     const caixaDeQuizz = document.querySelector(".caixaDeQuizz");
     console.log(caixaDeQuizz);
 
-    for (i=0; i < listaQuizzesImportados.length; i ++){
+    for (i = 0; i < listaQuizzesImportados.length; i ++){
         caixaDeQuizz.innerHTML += `<div class="quizzesDeOutros" id="${i}" onclick= "abrirQuizz(this)">
         <img src="${listaQuizzesImportados[i].image}">
         <span>${listaQuizzesImportados[i].title}</span>
@@ -54,6 +54,11 @@ function abrirQuizz(elemento) {
     <span>${listaQuizzesImportados[quizzID].title}</span>
     </div>
 </div>`
+
+    //adicionar perguntas
+    for (i = 0; i < listaQuizzesImportados[quizzID].questions.length; i ++){
+        pagInicial.innerHTML += `<div class="container-pergunta-individual"></div>` 
+    }
 }
 
 /*:::::Fim da Trocas entre telas Abrir Quizz (joão):::::*/
