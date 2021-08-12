@@ -11,6 +11,7 @@ const paginaDeUmQuizz = document.querySelector('.pagina-de-um-quizz');
 /*:::::Fim do HTML das telas:::::*/
 
 const quizURL = "https://mock-api.bootcamp.respondeai.com.br/api/v3/buzzquizz/quizzes";
+let listaQuizzesImportados;
 
 capturarQuizzes()
 
@@ -23,42 +24,34 @@ function capturarQuizzes() {
 }
 
 function renderizarQuizes(quizzes) {
-    console.log(quizzes.data); //lista de objetos (quizzes)
+
+    listaQuizzesImportados = quizzes.data
 
     const caixaDeQuizz = document.querySelector(".caixaDeQuizz");
     console.log(caixaDeQuizz);
 
-    for (i=0; i < quizzes.data.length; i ++){
-        console.log(quizzes.data[i].image); //url da imagen (colocar no src com innerHTML)
-
-        console.log(quizzes.data[i].title); //título do quizz
-    } 
-    
-    for (i=0; i < quizzes.data.length; i ++){
-        caixaDeQuizz.innerHTML += `<div class="quizzesDeOutros" id="${i}" onclick="testeOnclick(this); abrirQuizz(this)">
-        <img src="${quizzes.data[i].image}">
-        <span>${quizzes.data[i].title}</span>
+    for (i=0; i < listaQuizzesImportados.length; i ++){
+        caixaDeQuizz.innerHTML += `<div class="quizzesDeOutros" id="${i}" onclick= "abrirQuizz(this)">
+        <img src="${listaQuizzesImportados[i].image}">
+        <span>${listaQuizzesImportados[i].title}</span>
         <div class="sombraImagem"></div>
     </div>` 
     } 
 
 }
 
-function testeOnclick(elemento) {
-    alert(elemento.id)
-    console.log(elemento.innerHTML);
-}
-
 /*:::::Trocas entre telas Abrir Quizz (joão):::::*/
 
 function abrirQuizz(elemento) {
-    alert('abrir quizz');
 
-    console.log(elemento.innerHTML)
+    const quizzID = elemento.id;
+    const quizzImgUrl = listaQuizzesImportados[quizzID].image;
+    const quizzTitulo = listaQuizzesImportados[quizzID].title;
 
     pagInicial.innerHTML = `<div class="pagina-de-um-quizz">
     <div class="container-foto-de-capa-quizz">
-
+    <img src="${quizzImgUrl}">
+    <span>${listaQuizzesImportados[quizzID].title}</span>
     </div>
 </div>`
 }
