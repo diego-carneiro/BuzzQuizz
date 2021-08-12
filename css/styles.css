@@ -171,11 +171,35 @@
     height: 825px;
 }
 .inputTitle{
+    width: 300px;
     font-size: 20px;
     font-weight: bold;
     margin-left: 15px;
     margin-bottom: 12px;
     margin-top: 28px;
+}
+.caixaDeAdição{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 600px;
+    height: 74px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);  
+}
+.addTitle{
+    width: 300px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 15px;
+   
+ 
+}
+.pencil{
+    width: 26px;
+    height: 23px;
+    margin-right: 10px;
 }
 
 /*:::::::::::Fim da Tela de Criação de Quizz 2::::::::::*/
