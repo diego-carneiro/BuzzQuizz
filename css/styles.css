@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
+    width: 100%;
     height: 69px;
     background-color: #EC362D;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -23,7 +23,7 @@
     flex-direction: column;
     align-items: center;
     width: 100vw;
-    height: 100vh;
+    height: auto;
     margin-top: 10px;
 }
 .criarQuizz{
@@ -189,7 +189,7 @@
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);  
 }
 .addTitle{
-    width: 300px;
+    width: 100px;
     font-size: 20px;
     font-weight: bold;
     margin-left: 15px;
@@ -260,4 +260,51 @@ body {
 /*::::::::::Classes de Suporte::::::::::*/
 .displayNone{
     display: none;
+}
+
+/*:::::Versão Mobile:::::*/
+
+@media (max-width: 1100px){
+.corpoPaginaInicial{
+    width: 100vw;
+    justify-content: center;  
+}
+.criarQuizz{
+    width: 90vw;
+}
+.caixaDeQuizz{
+    width: 90vw;
+}
+.corpoPaginaCriação{
+    width: 90vw;
+    justify-content: center; 
+}
+.conteudoCriação{
+    width: 90vw;
+    align-items: center;
+}
+.dadosQuizz_1{
+    width: 90vw;
+}
+.dadosQuizz_2{
+    width: 90vw;
+}
+.dadosQuizz_3{
+    width: 90vw;
+}
+#inputBox{
+    width: 90vw;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.instrução{
+    margin-left: 0px;
+}
+.caixadeNiveis{
+    width: 90%;
+}
+.caixaDeAdição{
+    width: 90%;
+}
+
 }
