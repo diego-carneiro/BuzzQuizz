@@ -35,7 +35,7 @@ function renderizarQuizes(quizzes) {
     } 
     
     for (i=0; i < quizzes.data.length; i ++){
-        caixaDeQuizz.innerHTML += `<div class="quizzesDeOutros" onclick="testeOnclick(this); abrirQuizz(this)">
+        caixaDeQuizz.innerHTML += `<div class="quizzesDeOutros" id="${i}" onclick="testeOnclick(this); abrirQuizz(this)">
         <img src="${quizzes.data[i].image}">
         <span>${quizzes.data[i].title}</span>
         <div class="sombraImagem"></div>
@@ -45,7 +45,8 @@ function renderizarQuizes(quizzes) {
 }
 
 function testeOnclick(elemento) {
-    alert(elemento.innerHTML);
+    alert(elemento.id)
+    console.log(elemento.innerHTML);
 }
 
 /*:::::Trocas entre telas Abrir Quizz (joão):::::*/
