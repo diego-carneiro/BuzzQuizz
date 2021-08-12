@@ -19,8 +19,8 @@
 .corpoPaginaInicial{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-
+    justify-content: space-around;
+    flex-direction: column;
     align-items: center;
     width: 100vw;
     height: 100vh;
@@ -133,7 +133,7 @@
     width: 564px;
     height: 46px;
     margin-bottom: 10px;
-    margin-left: 15px;
+    margin-left: 18px;
     font-size: 19px;
     font-style: italic;
     border: 1px solid #D1D1D1;
@@ -163,7 +163,7 @@
     border-radius: 50px;
     border: 1px dashed #EC362D;
 }
-/*:::::::::::Tela de Criação de Quizz 1::::::::::*/
+/*:::::::::::Fim da Tela de Criação de Quizz 1::::::::::*/
 
 /*:::::::::::Tela de Criação de Quizz 2::::::::::*/
 .dadosQuizz_2{
@@ -178,8 +178,18 @@
     margin-top: 28px;
 }
 
-/*:::::::::::Tela de Criação de Quizz 2::::::::::*/
+/*:::::::::::Fim da Tela de Criação de Quizz 2::::::::::*/
 
+/*:::::::::::Tela de Criação de Quizz 3::::::::::*/
+.caixadeNiveis{
+    width: 600px;
+    height: 316px;
+}
+
+
+
+
+/*:::::::::::Fim da Tela de Criação de Quizz 3::::::::::*/
 /*::::::::::Estilos Gerais::::::::::*/
 
 * {

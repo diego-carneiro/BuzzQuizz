@@ -1,3 +1,13 @@
+/*:::::HTML das telas:::::*/
+const pagInicial = document.querySelector(".corpoPaginaInicial");
+const telaCriação_1 = document.querySelector(".criação_1");
+const telaCriação_2 = document.querySelector(".criação_2");
+const telaCriação_3 = document.querySelector(".criação_3");
+const telaCriação_4 = document.querySelector(".criação_4"); 
+
+
+/*:::::Fim do HTML das telas:::::*/
+
 const quizURL = "https://mock-api.bootcamp.respondeai.com.br/api/v3/buzzquizz/quizzes";
 
 capturarQuizzes()
@@ -36,29 +46,46 @@ function testeOnclick() {
     alert("isso foi clicado");
 }
 
-/*::::::::::Trocas entre Telas::::::::::*/
+/*:::::Trocas entre telas para criação:::::*/
+function estadoInicial(){
+    pagInicial.classList.remove('displayNone');
+    telaCriação_1.classList.add('displayNone');
+    telaCriação_2.classList.add('displayNone');
+    telaCriação_3.classList.add('displayNone');
+    telaCriação_4.classList.add('displayNone');
+}
+estadoInicial();
 
 function subirCriação_1(){
-    let corpoPagInicial = document.querySelector(".corpoPaginaInicial");
-    let criação_1 = document.querySelector(".criação_1");
-
-    corpoPagInicial.classList.add('displayNone');
-    criação_1.classList.remove('displayNone');
+    pagInicial.classList.add('displayNone');
+    telaCriação_1.classList.remove('displayNone');
+    telaCriação_2.classList.add('displayNone');
+    telaCriação_3.classList.add('displayNone');
+    telaCriação_4.classList.add('displayNone');
 }
 function subirCriação_2(){
-    let criação_1 = document.querySelector(".criação_1");
-    let criação_2 = document.querySelector(".criação_2");
-
-    criação_1.classList.add('displayNone');
-
+    pagInicial.classList.add('displayNone');
+    telaCriação_1.classList.add('displayNone');
+    telaCriação_2.classList.remove('displayNone');
+    telaCriação_3.classList.add('displayNone');
+    telaCriação_4.classList.add('displayNone');
 }
-function retornarTelaInicial(){
-    let corpoPagInicial = document.querySelector(".corpoPaginaInicial");
-    let criação_1 = document.querySelector(".corpoPaginaCriação");
-    corpoPagInicial.classList.remove('displayNone');
-    criação_1.classList.add('displayNone');
+function subirCriação_3(){
+    pagInicial.classList.add('displayNone');
+    telaCriação_1.classList.add('displayNone');
+    telaCriação_2.classList.add('displayNone');
+    telaCriação_3.classList.remove('displayNone');
+    telaCriação_4.classList.add('displayNone');
+}
+function subirCriação_4(){
+    pagInicial.classList.add('displayNone');
+    telaCriação_1.classList.add('displayNone');
+    telaCriação_2.classList.add('displayNone');
+    telaCriação_3.classList.add('displayNone');
+    telaCriação_4.classList.remove('displayNone');
 }
 
 
-/*::::::::::Trocas entre Telas::::::::::*/
+
+/*:::::Fim de trocas entre telas para criação:::::*/
 
