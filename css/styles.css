@@ -36,6 +36,7 @@
     border-radius: 5px;
     border: 1px dashed #D5D5D5;
     margin-bottom: 110px;
+    margin-top: 80px;
 }
 .botao-criacao{
     display: flex;
@@ -63,16 +64,15 @@
 .caixa-quizz{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     width: 1050px;
     height: 374px;
-    background-color: yellow;
 }
 .quizzes-de-outros{
     width: 340px;
     height: 181px;
-    background-color: violet;
     position: relative;
+    margin-bottom: 14px;
 }
 .quizzes-de-outros img {
     width: 100%;
@@ -297,13 +297,21 @@ body {
 .criar-quizz{
     width: 90vw;
     margin-bottom: 30px;
+    margin-top: 30px;
 }
 .caixa-quizz{
     width: 90vw;
+    margin: 0 auto;
 }
 .corpo-pagina-criacao{
     justify-content: center; 
 }
+.quizzes-de-outros{
+    margin: 0 auto;
+    margin-bottom: 14px;
+}
+
+
 .conteudo-criacao{
     width: 90vw;
     align-items: center;
