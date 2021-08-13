@@ -53,12 +53,30 @@ function abrirQuizz(elemento) {
     <img src="${quizzImgUrl}">
     <span>${listaQuizzesImportados[quizzID].title}</span>
     </div>
-</div>`
+    </div>`
 
+   
+    
     //adicionar perguntas
     for (i = 0; i < listaQuizzesImportados[quizzID].questions.length; i ++){
-        pagInicial.innerHTML += `<div class="container-pergunta-individual"></div>` 
+        //gerar respostas
+        //armazenar texto em uma variável
+                    //TA BUGANDO E COMEÇANDO NA PRIMEIRA
+        // let stringRespostas = '';
+
+        // for (i = 0; i < listaQuizzesImportados[quizzID].questions[i].answers.length; i++) {
+        //     stringRespostas += '<div class="container-resposta-indivual"></div>';
+        // }
+
+        pagInicial.innerHTML += `<div class="container-pergunta-individual">
+        <div class="container-titulo-pergunta-individual">
+        </div>
+        <div class="container-respostas-pergunta-individual">
+        </div>
+    </div>` 
     }
+
+    //adicionar resposta
 }
 
 /*:::::Fim da Trocas entre telas Abrir Quizz (joão):::::*/
@@ -70,8 +88,6 @@ function estadoInicial(){
     telaCriação_2.classList.add('display-none');
     telaCriação_3.classList.add('display-none');
     telaCriação_4.classList.add('display-none');
-
-    paginaDeUmQuizz.classList.add('display-none');
 }
 estadoInicial();
 

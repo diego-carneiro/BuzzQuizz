@@ -249,6 +249,35 @@
     height: 676px;
     margin-bottom: 42px;
     background-color: yellow;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.container-titulo-pergunta-individual{
+    width: 688px;
+    height: 138px;
+    margin-top: 28px;
+    background-color: tomato;
+}
+
+.container-respostas-pergunta-individual {
+    margin-top: 19px;
+    width: 684px;
+    height: 460px;
+    background-color: violet;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: space-between;
+
+}
+
+.container-resposta-indivual{
+    width: 330px;
+    height: 175px;
+    background-color: turquoise;
 }
 
 /*::::::::::Fim de Página de um Quizz (joão)::::::::::*/
