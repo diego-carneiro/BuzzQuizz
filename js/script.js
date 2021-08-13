@@ -44,36 +44,57 @@ function renderizarQuizes(quizzes) {
 
 function abrirQuizz(elemento) {
 
+    //Armazenar quizz individual em uma variável
+    
+
     const quizzID = elemento.id;
-    const quizzImgUrl = listaQuizzesImportados[quizzID].image;
-    const quizzTitulo = listaQuizzesImportados[quizzID].title;
+    const quizzIndividual = listaQuizzesImportados[quizzID];
+    const quizzImgUrl = quizzIndividual.image;
+    const quizzTitulo = quizzIndividual.title;
 
     pagInicial.innerHTML = `<div class="pagina-de-um-quizz">
     <div class="container-foto-de-capa-quizz">
     <img src="${quizzImgUrl}">
-    <span>${listaQuizzesImportados[quizzID].title}</span>
+    <span>${quizzIndividual.title}</span>
     </div>
     </div>`
 
    
     
     //adicionar perguntas
-    for (i = 0; i < listaQuizzesImportados[quizzID].questions.length; i ++){
+    for (i = 0; i < quizzIndividual.questions.length; i ++){
+        
+
+        
+        //armazenar string das respostas em uma variável
+        let stringRespostas = '';
+
         //gerar respostas
-        //armazenar texto em uma variável
-                    //TA BUGANDO E COMEÇANDO NA PRIMEIRA
-        // let stringRespostas = '';
+        for (i_2 = 0; i_2 < quizzIndividual.questions[i].answers.length; i_2++) {
+            stringRespostas += '<div class="container-resposta-indivual"></div>';
+        };
 
-        // for (i = 0; i < listaQuizzesImportados[quizzID].questions[i].answers.length; i++) {
-        //     stringRespostas += '<div class="container-resposta-indivual"></div>';
-        // }
+        //mudar a cor do container titulo pergunta individual
+        let corId = "cor" + i;
 
+        //adicionar ponto para querySelector
+        let pontoCorId = "." + corId;
+
+        //Adicionar mudaças ao DOM
         pagInicial.innerHTML += `<div class="container-pergunta-individual">
-        <div class="container-titulo-pergunta-individual">
+        <div class="container-titulo-pergunta-individual  ${corId}">
+            <h2>${quizzIndividual.questions[i].title}</h2>
         </div>
         <div class="container-respostas-pergunta-individual">
+            ${stringRespostas}
         </div>
     </div>` 
+
+        
+
+        let containerTituloPerguntaIndividual = document.querySelector(pontoCorId);
+
+        containerTituloPerguntaIndividual.style.background = quizzIndividual.questions[i].color;
     }
 
     //adicionar resposta
