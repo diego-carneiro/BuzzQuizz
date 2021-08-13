@@ -1,9 +1,9 @@
 /*:::::HTML das telas:::::*/
-const pagInicial = document.querySelector(".corpoPaginaInicial");
-const telaCriação_1 = document.querySelector(".criação_1");
-const telaCriação_2 = document.querySelector(".criação_2");
-const telaCriação_3 = document.querySelector(".criação_3");
-const telaCriação_4 = document.querySelector(".criação_4"); 
+const pagInicial = document.querySelector(".corpo-pagina-inicial");
+const telaCriação_1 = document.querySelector(".criacao_1");
+const telaCriação_2 = document.querySelector(".criacao_2");
+const telaCriação_3 = document.querySelector(".criacao_3");
+const telaCriação_4 = document.querySelector(".criacao_4"); 
 
 const paginaDeUmQuizz = document.querySelector('.pagina-de-um-quizz');
 
@@ -27,11 +27,11 @@ function renderizarQuizes(quizzes) {
 
     listaQuizzesImportados = quizzes.data
 
-    const caixaDeQuizz = document.querySelector(".caixaDeQuizz");
+    const caixaDeQuizz = document.querySelector(".caixa-quizz");
     console.log(caixaDeQuizz);
 
     for (i = 0; i < listaQuizzesImportados.length; i ++){
-        caixaDeQuizz.innerHTML += `<div class="quizzesDeOutros" id="${i}" onclick= "abrirQuizz(this)">
+        caixaDeQuizz.innerHTML += `<div class="quizzes-de-outros" id="${i}" onclick= "abrirQuizz(this)">
         <img src="${listaQuizzesImportados[i].image}">
         <span>${listaQuizzesImportados[i].title}</span>
         <div class="sombraImagem"></div>
@@ -65,43 +65,43 @@ function abrirQuizz(elemento) {
 
 /*:::::Trocas entre telas para criação:::::*/
 function estadoInicial(){
-    pagInicial.classList.remove('displayNone');
-    telaCriação_1.classList.add('displayNone');
-    telaCriação_2.classList.add('displayNone');
-    telaCriação_3.classList.add('displayNone');
-    telaCriação_4.classList.add('displayNone');
+    pagInicial.classList.remove('display-none');
+    telaCriação_1.classList.add('display-none');
+    telaCriação_2.classList.add('display-none');
+    telaCriação_3.classList.add('display-none');
+    telaCriação_4.classList.add('display-none');
 
-    paginaDeUmQuizz.classList.add('displayNone');
+    paginaDeUmQuizz.classList.add('display-none');
 }
 estadoInicial();
 
 function subirCriação_1(){
-    pagInicial.classList.add('displayNone');
-    telaCriação_1.classList.remove('displayNone');
-    telaCriação_2.classList.add('displayNone');
-    telaCriação_3.classList.add('displayNone');
-    telaCriação_4.classList.add('displayNone');
+    pagInicial.classList.add('display-none');
+    telaCriação_1.classList.remove('display-none');
+    telaCriação_2.classList.add('display-none');
+    telaCriação_3.classList.add('display-none');
+    telaCriação_4.classList.add('display-none');
 }
 function subirCriação_2(){
-    pagInicial.classList.add('displayNone');
-    telaCriação_1.classList.add('displayNone');
-    telaCriação_2.classList.remove('displayNone');
-    telaCriação_3.classList.add('displayNone');
-    telaCriação_4.classList.add('displayNone');
+    pagInicial.classList.add('display-none');
+    telaCriação_1.classList.add('display-none');
+    telaCriação_2.classList.remove('display-none');
+    telaCriação_3.classList.add('display-none');
+    telaCriação_4.classList.add('display-none');
 }
 function subirCriação_3(){
-    pagInicial.classList.add('displayNone');
-    telaCriação_1.classList.add('displayNone');
-    telaCriação_2.classList.add('displayNone');
-    telaCriação_3.classList.remove('displayNone');
-    telaCriação_4.classList.add('displayNone');
+    pagInicial.classList.add('display-none');
+    telaCriação_1.classList.add('display-none');
+    telaCriação_2.classList.add('display-none');
+    telaCriação_3.classList.remove('display-none');
+    telaCriação_4.classList.add('display-none');
 }
 function subirCriação_4(){
-    pagInicial.classList.add('displayNone');
-    telaCriação_1.classList.add('displayNone');
-    telaCriação_2.classList.add('displayNone');
-    telaCriação_3.classList.add('displayNone');
-    telaCriação_4.classList.remove('displayNone');
+    pagInicial.classList.add('display-none');
+    telaCriação_1.classList.add('display-none');
+    telaCriação_2.classList.add('display-none');
+    telaCriação_3.classList.add('display-none');
+    telaCriação_4.classList.remove('display-none');
 }
 
 

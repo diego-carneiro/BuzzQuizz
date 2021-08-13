@@ -8,7 +8,7 @@
     background-color: #EC362D;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.tituloTopo{
+.titulo-topo{
     color: white;
     font-size: 37px;
     font-weight: bold;
@@ -16,7 +16,7 @@
 /*::::::::::Corpo da Página Inicial::::::::::*/
 
 /*::::::::::Sugestão de criação de Quiz::::::::::*/
-.corpoPaginaInicial{
+.corpo-pagina-inicial{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -26,7 +26,7 @@
     height: auto;
     margin-top: 10px;
 }
-.criarQuizz{
+.criar-quizz{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -36,14 +36,14 @@
     border-radius: 5px;
     border: 1px dashed #D5D5D5;
 }
-.botãoDeCriação{
+.botao-criacao{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     width: 250px;
     height: 107px;
 }
-.avisoQuizz{
+.aviso-quizz{
     font-size: 20px;
     color: #B9B9B9;
     text-align: center;
@@ -59,7 +59,7 @@
     border: 1px dashed #EC362D;
 }
 /*::::::::::Todos os Quizzes::::::::::*/
-.caixaDeQuizz{
+.caixa-quizz{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -67,20 +67,20 @@
     height: 374px;
     background-color: yellow;
 }
-.quizzesDeOutros{
+.quizzes-de-outros{
     width: 340px;
     height: 181px;
     background-color: violet;
     position: relative;
 }
 
-.quizzesDeOutros img {
+.quizzes-de-outros img {
     width: 100%;
     height: 100%;
     border-radius: 5px;
 }
 
-.sombraImagem {
+.sombra-imagem {
     width: 100%;
     height: 100%;
     border-radius: 5px;
@@ -89,7 +89,7 @@
     top: 0;
 }
 
-.quizzesDeOutros span{
+.quizzes-de-outros span{
     position: absolute;
     bottom: 20px;
     left: 15px;
@@ -98,7 +98,7 @@
 }
 
 /*:::::::::::Tela de Criação de Quizz 1::::::::::*/
-.corpoPaginaCriação{
+.corpo-pagina-criacao{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -108,7 +108,7 @@
     margin-top: 10px;
     background-color: white;
 }
-.conteudoCriação{
+.conteudo-criacao{
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -117,19 +117,19 @@
     height: 1200px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
 }
-.instrução{
+.instrucao{
     font-size: 23px;
     font-weight: bold;
     margin-top: 70px;
     margin-bottom: 30px;
 }
-.dadosQuizz_1{
+.dados-quizz_1{
     width: 600px;
     height: 256px;
     background-color: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05)
 }
-#inputBox{
+#input-box{
     width: 564px;
     height: 46px;
     margin-bottom: 10px;
@@ -140,7 +140,7 @@
     border-radius: 5px;
   
 }
-.botaoDeProsseguir{
+.botao-prosseguir{
     width: 370px;
     height: 54px;
     border-radius: 15px;
@@ -148,7 +148,7 @@
     margin-top: 75px;
     margin-bottom: 30px;
 }
-.textoBotaoProsseguir{
+.texto-botao-prosseguir{
     font-size: 20px;
     color: white;
     text-align: center;
@@ -166,11 +166,11 @@
 /*:::::::::::Fim da Tela de Criação de Quizz 1::::::::::*/
 
 /*:::::::::::Tela de Criação de Quizz 2::::::::::*/
-.dadosQuizz_2{
+.dados-quizz_2{
     width: 600px;
     height: 825px;
 }
-.inputTitle{
+.input-title{
     width: 300px;
     font-size: 20px;
     font-weight: bold;
@@ -178,7 +178,7 @@
     margin-bottom: 12px;
     margin-top: 28px;
 }
-.caixaDeAdição{
+.caixa-adicao{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -188,7 +188,7 @@
     background-color: #ffffff;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);  
 }
-.addTitle{
+.add-title{
     width: 100px;
     font-size: 20px;
     font-weight: bold;
@@ -205,7 +205,7 @@
 /*:::::::::::Fim da Tela de Criação de Quizz 2::::::::::*/
 
 /*:::::::::::Tela de Criação de Quizz 3::::::::::*/
-.caixadeNiveis{
+.caixa-niveis{
     width: 600px;
     height: 316px;
 }
@@ -265,52 +265,52 @@ body {
 }
 
 /*::::::::::Classes de Suporte::::::::::*/
-.displayNone{
+.display-none{
     display: none;
 }
 
 /*:::::Versão Mobile:::::*/
 
 @media (max-width: 1100px){
-.corpoPaginaInicial{
+.corpo-pagina-inicial{
     width: 100vw;
     justify-content: center;  
 }
-.criarQuizz{
+.criar-quizz{
     width: 90vw;
 }
-.caixaDeQuizz{
+.caixa-quizz{
     width: 90vw;
 }
-.corpoPaginaCriação{
+.corpo-pagina-criacao{
     width: 90vw;
     justify-content: center; 
 }
-.conteudoCriação{
+.conteudo-criacao{
     width: 90vw;
     align-items: center;
 }
-.dadosQuizz_1{
+.dados-quizz_1{
     width: 90vw;
 }
-.dadosQuizz_2{
+.dados-quizz_2{
     width: 90vw;
 }
-.dadosQuizz_3{
+.dados-quizz_3{
     width: 90vw;
 }
-#inputBox{
+#input-box{
     width: 90vw;
     margin-left: 0px;
     margin-right: 0px;
 }
-.instrução{
+.instrucao{
     margin-left: 0px;
 }
-.caixadeNiveis{
+.caixa-niveis{
     width: 90%;
 }
-.caixaDeAdição{
+.caixa-adicao{
     width: 90%;
 }
 
