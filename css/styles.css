@@ -66,7 +66,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     width: 1050px;
-    height: 374px;
+    
 }
 .quizzes-de-outros{
     width: 340px;
@@ -265,8 +265,21 @@
 
 .container-resposta-indivual{
     width: 330px;
-    height: 175px;
+    height: 200px;
     background-color: turquoise;
+}
+
+.container-resposta-indivual img {
+    width: 330px;
+    height: 175px;
+}
+
+.container-resposta-indivual span{
+    color: inherit;
+}
+
+.nao-selecionado {
+    opacity: 0.6;
 }
 
 /*::::::::::Fim de Página de um Quizz (joão)::::::::::*/
@@ -285,6 +298,18 @@ body {
 /*::::::::::Classes de Suporte::::::::::*/
 .display-none{
     display: none;
+}
+
+.verde {
+    color: green;
+}
+
+.vermelho {
+    color: red;
+}
+
+.preto {
+    color: black;
 }
 
 /*:::::Versão Mobile:::::*/

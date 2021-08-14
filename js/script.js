@@ -25,16 +25,15 @@ function capturarQuizzes() {
 
 function renderizarQuizes(quizzes) {
 
-    listaQuizzesImportados = quizzes.data
+    listaQuizzesImportados = quizzes.data;
 
     const caixaDeQuizz = document.querySelector(".caixa-quizz");
-    console.log(caixaDeQuizz);
 
     for (i = 0; i < listaQuizzesImportados.length; i ++){
         caixaDeQuizz.innerHTML += `<div class="quizzes-de-outros" id="${i}" onclick= "abrirQuizz(this)">
         <img src="${listaQuizzesImportados[i].image}">
         <span>${listaQuizzesImportados[i].title}</span>
-        <div class="sombraImagem"></div>
+        <div class="sombra-imagem"></div>
     </div>` 
     } 
 
@@ -52,6 +51,7 @@ function abrirQuizz(elemento) {
     const quizzImgUrl = quizzIndividual.image;
     const quizzTitulo = quizzIndividual.title;
 
+    //abrir quizz e criar foto de capa
     pagInicial.innerHTML = `<div class="pagina-de-um-quizz">
     <div class="container-foto-de-capa-quizz">
     <img src="${quizzImgUrl}">
@@ -71,7 +71,22 @@ function abrirQuizz(elemento) {
 
         //gerar respostas
         for (i_2 = 0; i_2 < quizzIndividual.questions[i].answers.length; i_2++) {
-            stringRespostas += '<div class="container-resposta-indivual"></div>';
+            const respostaIndividual = quizzIndividual.questions[i].answers[i_2];
+            let corTexto;
+
+            console.log(respostaIndividual.isCorrectAnswer);
+            if (respostaIndividual.isCorrectAnswer){
+                corTexto = "verde"
+            }else{
+                corTexto = "vermelho"
+            };
+
+            stringRespostas += `<div class="container-resposta-indivual classe${i} ${corTexto} preto" id = "${i}" onclick="selecionarResposta(this)" type"blablabla">
+            <img src="${respostaIndividual.image}">
+            <span>${respostaIndividual.text}</span>
+        </div>`;
+
+            
         };
 
         //mudar a cor do container titulo pergunta individual
@@ -98,6 +113,30 @@ function abrirQuizz(elemento) {
     }
 
     //adicionar resposta
+}
+
+
+//selecionar respostas
+function selecionarResposta(elemento) {
+
+    const classeId = "classe" + elemento.id;
+    const selectors = ".container-respostas-pergunta-individual ." + classeId; 
+
+    const respostas = document.querySelectorAll(selectors); //uma lista de todas as respostas desta pergunta
+    for (i = 0; i < respostas.length; i ++) {
+        respostas[i].classList.add("nao-selecionado");
+        respostas[i].removeAttribute("onclick");
+        respostas[i].classList.remove("preto");
+    };
+
+    elemento.classList.remove("nao-selecionado");
+
+    const textoVerde = document.querySelector(".verde");
+    const textoVermelho = document.querySelector(".vermelho");
+
+    textoVerde.style.color = 
+
+    console.log(respostas)
 }
 
 /*:::::Fim da Trocas entre telas Abrir Quizz (joão):::::*/
