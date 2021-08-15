@@ -13,7 +13,7 @@ const paginaDeUmQuizz = document.querySelector('.pagina-de-um-quizz');
 const quizURL = "https://mock-api.bootcamp.respondeai.com.br/api/v3/buzzquizz/quizzes";
 let listaQuizzesImportados;
 
-capturarQuizzes()
+capturarQuizzes();
 
 
 //Capturar Quiz
@@ -137,17 +137,17 @@ function selecionarResposta(elemento) {
     };
 
     elemento.classList.remove("nao-selecionado");
-    elemento.classList.add("selecionado")
+    elemento.classList.add("selecionado");
 
 
     //checar fim do quizz
-    checarFimQuizz()
+    checarFimQuizz();
 }
 
 function checarFimQuizz() {
     const naoModificado = document.querySelector(".nao-modificado")
     if (naoModificado === null) {
-        renderizarFimQuizz()
+        renderizarFimQuizz();
     }
 }
 
@@ -160,7 +160,7 @@ function renderizarFimQuizz() {
     let nivelAtingido = niveisQuiz[0];
 
     for (i = 0; i < niveisQuiz.length; i ++) {
-        console.log(niveisQuiz[i].minValue)
+        console.log(niveisQuiz[i].minValue);
         if (porcentagemAcertos > niveisQuiz[i].minValue) {
             nivelAtingido = niveisQuiz[i];
         }
@@ -176,7 +176,7 @@ function renderizarFimQuizz() {
     </div>
 </div>`
 
-}
+};
 
 /*:::::Fim da Trocas entre telas Abrir Quizz (joão):::::*/
 
@@ -215,7 +215,7 @@ function subirCriação_1() {
         </div>
     </div>
 </div>`
-}
+};
 
 function subirCriação_2() {
     pagInicial.innerHTML = `<div class="corpo-pagina-criacao criacao_2">
@@ -249,13 +249,13 @@ function subirCriação_2() {
         <div class="botao-prosseguir" onclick="subirCriação_3()">
             <p class="texto-botao-prosseguir">Prosseguir para criar níveis</p>
         </div>
-        <div class="botao-voltar" onclick="estadoInicial()">
+        <div class="botao-voltar" onclick="subirCriação_1()">
             <button class="voltar">Voltar</button>
         </div>
     </div>
 </div>
 </div>`
-}
+};
 
 function subirCriação_3() {
     pagInicial.innerHTML = `<div class="corpo-pagina-criacao criacao_3">
@@ -279,7 +279,7 @@ function subirCriação_3() {
         <div class="botao-prosseguir" onclick="subirCriação_4()">
             <p class="texto-botao-prosseguir">Finalizar Quizz</p>
         </div>
-        <div class="botao-voltar" onclick="estadoInicial()">
+        <div class="botao-voltar" onclick="subirCriação_2()">
             <button class="voltar">Voltar</button>
         </div>
     </div>
@@ -293,7 +293,7 @@ function subirCriação_4() {
         <div class="botao-de-prosseguir">
             <p class="texto-botao-prosseguir">Acessar Quizz</p>
         </div>
-        <div class="botao-voltar" onclick="estadoInicial()">
+        <div class="botao-voltar" onclick="subirCriação_3()">
             <button class="voltar">Voltar</button>
         </div>
     </div>
