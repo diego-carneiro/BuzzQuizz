@@ -87,6 +87,7 @@ function abrirQuizz(elemento) {
                 corTexto = "vermelho"
             };
 
+            
             stringRespostas += `<div class="container-resposta-indivual classe${i} ${corTexto} nao-modificado" id = "${i}" onclick="selecionarResposta(this)" type"blablabla">
             <img src="${respostaIndividual.image}">
             <span>${respostaIndividual.text}</span>
@@ -101,7 +102,7 @@ function abrirQuizz(elemento) {
         //adicionar ponto para querySelector
         let pontoCorId = "." + corId;
 
-        //Adicionar mudaças ao em uma variável global
+        //Adicionar mudaças ao DOM
         pagInicial.innerHTML += `<div class="container-pergunta-individual">
         <div class="container-titulo-pergunta-individual  ${corId}">
             <h2>${quizzIndividual.questions[i].title}</h2>
@@ -112,7 +113,7 @@ function abrirQuizz(elemento) {
     </div>`
 
 
-
+        //mudar cor do container título
         let containerTituloPerguntaIndividual = document.querySelector(pontoCorId);
 
         containerTituloPerguntaIndividual.style.background = quizzIndividual.questions[i].color;
@@ -164,9 +165,6 @@ function renderizarFimQuizz() {
             nivelAtingido = niveisQuiz[i];
         }
     }
-
-    console.log(nivelAtingido.title)
-    
 
     pagInicial.innerHTML += `<div class="container-fim-quizz">
     <div class="container-resultado">
