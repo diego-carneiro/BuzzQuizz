@@ -282,6 +282,30 @@
     opacity: 0.6;
 }
 
+.container-fim-quizz {
+    width: 759px;
+    height: 700px;
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-resultado {
+    width: 727px;
+    height: 99px;
+    background-color: red;
+    margin-bottom: 18px;
+}
+
+.imagem-e-descricao {
+    width: 681px;
+    height: 273px;
+    background-color: salmon;
+}
+
+
+
 /*::::::::::Fim de Página de um Quizz (joão)::::::::::*/
 
 /*::::::::::Estilos Gerais::::::::::*/
@@ -308,7 +332,7 @@ body {
     color: red;
 }
 
-.preto {
+.nao-modificado {
     color: black;
 }
 

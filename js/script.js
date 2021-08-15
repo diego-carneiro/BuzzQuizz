@@ -3,7 +3,7 @@ const pagInicial = document.querySelector(".corpo-pagina-inicial");
 const telaCriação_1 = document.querySelector(".criacao_1");
 const telaCriação_2 = document.querySelector(".criacao_2");
 const telaCriação_3 = document.querySelector(".criacao_3");
-const telaCriação_4 = document.querySelector(".criacao_4"); 
+const telaCriação_4 = document.querySelector(".criacao_4");
 
 const paginaDeUmQuizz = document.querySelector('.pagina-de-um-quizz');
 
@@ -29,27 +29,32 @@ function renderizarQuizes(quizzes) {
 
     const caixaDeQuizz = document.querySelector(".caixa-quizz");
 
-    for (i = 0; i < listaQuizzesImportados.length; i ++){
+    for (i = 0; i < listaQuizzesImportados.length; i++) {
         caixaDeQuizz.innerHTML += `<div class="quizzes-de-outros" id="${i}" onclick= "abrirQuizz(this)">
         <img src="${listaQuizzesImportados[i].image}">
         <span>${listaQuizzesImportados[i].title}</span>
         <div class="sombra-imagem"></div>
-    </div>` 
-    } 
+    </div>`
+    }
 
 }
 
 /*:::::Trocas entre telas Abrir Quizz (joão):::::*/
 
+let quantidadePerguntas;
+let niveisQuiz;
+
 function abrirQuizz(elemento) {
 
     //Armazenar quizz individual em uma variável
-    
+
 
     const quizzID = elemento.id;
     const quizzIndividual = listaQuizzesImportados[quizzID];
     const quizzImgUrl = quizzIndividual.image;
     const quizzTitulo = quizzIndividual.title;
+
+    niveisQuiz = quizzIndividual.levels;
 
     //abrir quizz e criar foto de capa
     pagInicial.innerHTML = `<div class="pagina-de-um-quizz">
@@ -59,13 +64,15 @@ function abrirQuizz(elemento) {
     </div>
     </div>`
 
-   
-    
-    //adicionar perguntas
-    for (i = 0; i < quizzIndividual.questions.length; i ++){
-        
 
-        
+
+    //adicionar perguntas
+    quantidadePerguntas = quizzIndividual.questions.length;
+
+    for (i = 0; i < quantidadePerguntas; i++) {
+
+
+
         //armazenar string das respostas em uma variável
         let stringRespostas = '';
 
@@ -74,19 +81,18 @@ function abrirQuizz(elemento) {
             const respostaIndividual = quizzIndividual.questions[i].answers[i_2];
             let corTexto;
 
-            console.log(respostaIndividual.isCorrectAnswer);
-            if (respostaIndividual.isCorrectAnswer){
+            if (respostaIndividual.isCorrectAnswer) {
                 corTexto = "verde"
-            }else{
+            } else {
                 corTexto = "vermelho"
             };
 
-            stringRespostas += `<div class="container-resposta-indivual classe${i} ${corTexto} preto" id = "${i}" onclick="selecionarResposta(this)" type"blablabla">
+            stringRespostas += `<div class="container-resposta-indivual classe${i} ${corTexto} nao-modificado" id = "${i}" onclick="selecionarResposta(this)" type"blablabla">
             <img src="${respostaIndividual.image}">
             <span>${respostaIndividual.text}</span>
         </div>`;
 
-            
+
         };
 
         //mudar a cor do container titulo pergunta individual
@@ -95,7 +101,7 @@ function abrirQuizz(elemento) {
         //adicionar ponto para querySelector
         let pontoCorId = "." + corId;
 
-        //Adicionar mudaças ao DOM
+        //Adicionar mudaças ao em uma variável global
         pagInicial.innerHTML += `<div class="container-pergunta-individual">
         <div class="container-titulo-pergunta-individual  ${corId}">
             <h2>${quizzIndividual.questions[i].title}</h2>
@@ -103,9 +109,9 @@ function abrirQuizz(elemento) {
         <div class="container-respostas-pergunta-individual">
             ${stringRespostas}
         </div>
-    </div>` 
+    </div>`
 
-        
+
 
         let containerTituloPerguntaIndividual = document.querySelector(pontoCorId);
 
@@ -120,29 +126,64 @@ function abrirQuizz(elemento) {
 function selecionarResposta(elemento) {
 
     const classeId = "classe" + elemento.id;
-    const selectors = ".container-respostas-pergunta-individual ." + classeId; 
+    const selectors = ".container-respostas-pergunta-individual ." + classeId;
 
     const respostas = document.querySelectorAll(selectors); //uma lista de todas as respostas desta pergunta
-    for (i = 0; i < respostas.length; i ++) {
+    for (i = 0; i < respostas.length; i++) {
         respostas[i].classList.add("nao-selecionado");
         respostas[i].removeAttribute("onclick");
-        respostas[i].classList.remove("preto");
+        respostas[i].classList.remove("nao-modificado");
     };
 
     elemento.classList.remove("nao-selecionado");
+    elemento.classList.add("selecionado")
 
-    const textoVerde = document.querySelector(".verde");
-    const textoVermelho = document.querySelector(".vermelho");
 
-    textoVerde.style.color = 
+    //checar fim do quizz
+    checarFimQuizz()
+}
 
-    console.log(respostas)
+function checarFimQuizz() {
+    const naoModificado = document.querySelector(".nao-modificado")
+    if (naoModificado === null) {
+        renderizarFimQuizz()
+    }
+}
+
+function renderizarFimQuizz() {
+    const listaAcertos = document.querySelectorAll(".verde.selecionado"); //lista de acertos
+    const quantidadeAcertos = listaAcertos.length;
+
+    const porcentagemAcertos = Math.round((quantidadeAcertos * 100) / quantidadePerguntas);
+
+    let nivelAtingido = 0;
+
+    for (i = 0; i < niveisQuiz.length; i ++) {
+        console.log(niveisQuiz[i].minValue)
+        if (porcentagemAcertos > niveisQuiz[i].minValue) {
+            nivelAtingido = i;
+        }
+    }
+
+    console.log("nivel:" + nivelAtingido)
+    
+
+    pagInicial.innerHTML += `<div class="container-fim-quizz">
+    <div class="container-resultado">
+        <span>${porcentagemAcertos}</span>
+    </div>
+    <div class="imagem-e-descricao">
+        <img src="">
+        <p></p>
+    </div>
+</div>`
+
 }
 
 /*:::::Fim da Trocas entre telas Abrir Quizz (joão):::::*/
 
 /*:::::Trocas entre telas para criação:::::*/
-function estadoInicial(){
+function estadoInicial() {
     pagInicial.classList.remove('display-none');
     telaCriação_1.classList.add('display-none');
     telaCriação_2.classList.add('display-none');
@@ -151,28 +192,28 @@ function estadoInicial(){
 }
 estadoInicial();
 
-function subirCriação_1(){
+function subirCriação_1() {
     pagInicial.classList.add('display-none');
     telaCriação_1.classList.remove('display-none');
     telaCriação_2.classList.add('display-none');
     telaCriação_3.classList.add('display-none');
     telaCriação_4.classList.add('display-none');
 }
-function subirCriação_2(){
+function subirCriação_2() {
     pagInicial.classList.add('display-none');
     telaCriação_1.classList.add('display-none');
     telaCriação_2.classList.remove('display-none');
     telaCriação_3.classList.add('display-none');
     telaCriação_4.classList.add('display-none');
 }
-function subirCriação_3(){
+function subirCriação_3() {
     pagInicial.classList.add('display-none');
     telaCriação_1.classList.add('display-none');
     telaCriação_2.classList.add('display-none');
     telaCriação_3.classList.remove('display-none');
     telaCriação_4.classList.add('display-none');
 }
-function subirCriação_4(){
+function subirCriação_4() {
     pagInicial.classList.add('display-none');
     telaCriação_1.classList.add('display-none');
     telaCriação_2.classList.add('display-none');
@@ -191,7 +232,7 @@ function subirCriação_4(){
 //     let conteudoCriação = document.querySelector(".conteudoCriação") 
 //     let caixaDeNível = document.querySelector(".segundoNivel");
 
-    
+
 //     caixaDeNível.classList.add('displayNone');
 //     conteudoCriação.innerHTML += `<div class="caixaDeNiveis">
 //     <p class="inputTitle">Nível 1</p>
