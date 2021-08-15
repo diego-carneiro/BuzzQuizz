@@ -184,43 +184,123 @@ function renderizarFimQuizz() {
 
 /*:::::Trocas entre telas para criação:::::*/
 function estadoInicial() {
-    pagInicial.classList.remove('display-none');
-    telaCriação_1.classList.add('display-none');
-    telaCriação_2.classList.add('display-none');
-    telaCriação_3.classList.add('display-none');
-    telaCriação_4.classList.add('display-none');
+    pagInicial.innerHTML = `<div class=corpo-pagina-inicial>
+    <div class="criar-quizz">
+        <div class="botao-criacao" onclick="subirCriação_1()">
+            <p class="aviso-quizz">Você não criou nenhum quizz ainda:(</p>
+            <button class="criar">Criar Quizz</button>
+        </div>
+    </div>
+    <div class="caixa-quizz">
+    </div>
+</div>`
+    
+    capturarQuizzes() 
 }
-estadoInicial();
 
 function subirCriação_1() {
-    pagInicial.classList.add('display-none');
-    telaCriação_1.classList.remove('display-none');
-    telaCriação_2.classList.add('display-none');
-    telaCriação_3.classList.add('display-none');
-    telaCriação_4.classList.add('display-none');
-}
-function subirCriação_2() {
-    pagInicial.classList.add('display-none');
-    telaCriação_1.classList.add('display-none');
-    telaCriação_2.classList.remove('display-none');
-    telaCriação_3.classList.add('display-none');
-    telaCriação_4.classList.add('display-none');
-}
-function subirCriação_3() {
-    pagInicial.classList.add('display-none');
-    telaCriação_1.classList.add('display-none');
-    telaCriação_2.classList.add('display-none');
-    telaCriação_3.classList.remove('display-none');
-    telaCriação_4.classList.add('display-none');
-}
-function subirCriação_4() {
-    pagInicial.classList.add('display-none');
-    telaCriação_1.classList.add('display-none');
-    telaCriação_2.classList.add('display-none');
-    telaCriação_3.classList.add('display-none');
-    telaCriação_4.classList.remove('display-none');
+    pagInicial.innerHTML = `<div class="corpo-pagina-criacao criacao_1">
+    <div class="conteudo-criacao">
+        <p class="instrucao">Comece pelo começo</p>
+        <div class="dados-quizz_1">
+            <input placeholder="   Título do seu quizz" id="input-box">
+            <input placeholder="   URL da imagem do seu quizz" id="input-box">
+            <input placeholder="   Quantidade de perguntas do quizz" id="input-box">
+            <input placeholder="   Quantidade de níveis do quizz" id="input-box">
+
+        </div>
+        <div class="botao-prosseguir" onclick="subirCriação_2()">
+            <p class="texto-botao-prosseguir">Prosseguir para criar perguntas</p>
+        </div>
+        <div class="botao-voltar" onclick="estadoInicial()">
+            <button class="voltar">Voltar</button>
+        </div>
+    </div>
+</div>`
 }
 
+function subirCriação_2() {
+    pagInicial.innerHTML = `<div class="corpo-pagina-criacao criacao_2">
+    <div class="conteudo-criacao">
+        <p class="instrucao">Crie suas perguntas</p>
+        <div class="dados-quizz_2">
+            <p class="input-title">Pergunta 1</p>
+            <div class="input-box">
+                <input placeholder="   Texto da Pergunta" id="input-box">
+                <input placeholder="   Cor de fundo da pergunta" id="input-box">
+            </div>
+            <p class="input-title">Resposta correta</p>
+            <div class="input-box">
+                <input placeholder="   Resposta correta" id="input-box">
+                <input placeholder="   URL da imagem" id="input-box">
+            </div>
+            <p class="input-title">Respostas Incorretas</p>
+            <div class="input-box">
+                <input placeholder="   Resposta incorreta 1" id="input-box">
+                <input placeholder="   URL da imagem 1" id="input-box">
+            </div>
+            <div class="input-box">
+                <input placeholder="   Resposta incorreta 2" id="input-box">
+                <input placeholder="   URL da imagem 2" id="input-box">
+            </div>
+            <div class="input-box">
+                <input placeholder="   Resposta incorreta 3" id="input-box">
+                <input placeholder="   URL da imagem 3" id="input-box">
+            </div>
+        </div>
+        <div class="botao-prosseguir" onclick="subirCriação_3()">
+            <p class="texto-botao-prosseguir">Prosseguir para criar níveis</p>
+        </div>
+        <div class="botao-voltar" onclick="estadoInicial()">
+            <button class="voltar">Voltar</button>
+        </div>
+    </div>
+</div>
+</div>`
+}
+
+function subirCriação_3() {
+    pagInicial.innerHTML = `<div class="corpo-pagina-criacao criacao_3">
+    <div class="conteudo-criacao">
+        <p class="instrucao">Agora, decida os níveis</p>
+        <div class="caixa-niveis">
+            <p class="input-title">Nível 1</p>
+            <input placeholder="   Título do nível" id="input-box">
+            <input placeholder="   % de acerto mínima" id="input-box">
+            <input placeholder="   URL da imagem do nível" id="input-box">
+            <input placeholder="   Descrição do nível" id="input-box">
+        </div>
+        <div class="caixa-adicao segundo-nivel">
+            <p class="add-title">Nível 2</p>
+            <img class="pencil" src="pencil.png" />
+        </div>
+        <div class="caixa-adicao terceiro-nivel">
+            <p class="add-title">Nível 3</p>
+            <img class="pencil" src="pencil.png" onclick="segundoNivel()" />
+        </div>
+        <div class="botao-prosseguir" onclick="subirCriação_4()">
+            <p class="texto-botao-prosseguir">Finalizar Quizz</p>
+        </div>
+        <div class="botao-voltar" onclick="estadoInicial()">
+            <button class="voltar">Voltar</button>
+        </div>
+    </div>
+</div>`
+};
+
+function subirCriação_4() {
+    pagInicial.innerHTML = `<div class="corpo-pagina-criacao criacao_4">
+    <div class="conteudo-criacao">
+        <p class="instrucao">Seu quizz está pronto!</p>
+        <div class="botao-de-prosseguir">
+            <p class="texto-botao-prosseguir">Acessar Quizz</p>
+        </div>
+        <div class="botao-voltar" onclick="estadoInicial()">
+            <button class="voltar">Voltar</button>
+        </div>
+    </div>
+</div>`
+};
 
 
 /*:::::Fim de trocas entre telas para criação:::::*/
