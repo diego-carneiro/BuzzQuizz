@@ -156,25 +156,25 @@ function renderizarFimQuizz() {
 
     const porcentagemAcertos = Math.round((quantidadeAcertos * 100) / quantidadePerguntas);
 
-    let nivelAtingido = 0;
+    let nivelAtingido = niveisQuiz[0];
 
     for (i = 0; i < niveisQuiz.length; i ++) {
         console.log(niveisQuiz[i].minValue)
         if (porcentagemAcertos > niveisQuiz[i].minValue) {
-            nivelAtingido = i;
+            nivelAtingido = niveisQuiz[i];
         }
     }
 
-    console.log("nivel:" + nivelAtingido)
+    console.log(nivelAtingido.title)
     
 
     pagInicial.innerHTML += `<div class="container-fim-quizz">
     <div class="container-resultado">
-        <span>${porcentagemAcertos}</span>
+        <h1>${nivelAtingido.title}</h1>
     </div>
     <div class="imagem-e-descricao">
-        <img src="">
-        <p></p>
+        <img src="${nivelAtingido.image}">
+        <p>${nivelAtingido.text}</p>
     </div>
 </div>`
 

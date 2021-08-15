@@ -302,9 +302,13 @@
     width: 681px;
     height: 273px;
     background-color: salmon;
+    display: flex;
 }
 
-
+.imagem-e-descricao img {
+    width: 364px;
+    height: 273px;
+}
 
 /*::::::::::Fim de Página de um Quizz (joão)::::::::::*/
 
