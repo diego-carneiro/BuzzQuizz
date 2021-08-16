@@ -298,7 +298,7 @@ function subirCriação_4() {
         <div class="botao-de-prosseguir">
             <p class="texto-botao-prosseguir">Acessar Quizz</p>
         </div>
-        <div class="botao-voltar" onclick="subirCriação_3()">
+        <div class="botao-voltar" onclick="estadoInicial()">
             <button class="voltar">Voltar</button>
         </div>
     </div>
