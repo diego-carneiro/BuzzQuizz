@@ -66,10 +66,18 @@ function abrirQuizz(elemento) {
     </div>
     </div>`
 
+    //Embaralhar lista de perguntas
+    let listaPerguntas = quizzIndividual.questions
+
+    listaPerguntas.sort(comparador); 
+
+    function comparador() { 
+        return Math.random() - 0.5; 
+    }
 
 
     //adicionar perguntas
-    quantidadePerguntas = quizzIndividual.questions.length;
+    quantidadePerguntas = listaPerguntas.length;
 
     for (i = 0; i < quantidadePerguntas; i++) {
 
@@ -79,8 +87,8 @@ function abrirQuizz(elemento) {
         let listaRespostas = [];
 
         //gerar respostas para lista
-        for (i_2 = 0; i_2 < quizzIndividual.questions[i].answers.length; i_2 ++) {
-            const respostaIndividual = quizzIndividual.questions[i].answers[i_2];
+        for (i_2 = 0; i_2 < listaPerguntas[i].answers.length; i_2 ++) {
+            const respostaIndividual = listaPerguntas[i].answers[i_2];
             let corTexto;
 
             if (respostaIndividual.isCorrectAnswer) {
@@ -120,7 +128,7 @@ function abrirQuizz(elemento) {
         //Adicionar mudaças ao DOM
         pagInicial.innerHTML += `<div class="container-pergunta-individual">
         <div class="container-titulo-pergunta-individual  ${corId}">
-            <h2>${quizzIndividual.questions[i].title}</h2>
+            <h2>${listaPerguntas[i].title}</h2>
         </div>
         <div class="container-respostas-pergunta-individual">
             ${stringRespostas}
@@ -131,7 +139,7 @@ function abrirQuizz(elemento) {
         //mudar cor do container título
         let containerTituloPerguntaIndividual = document.querySelector(pontoCorId);
 
-        containerTituloPerguntaIndividual.style.background = quizzIndividual.questions[i].color;
+        containerTituloPerguntaIndividual.style.background = listaPerguntas[i].color;
     }
 
     //adicionar resposta
@@ -194,6 +202,8 @@ function renderizarFimQuizz() {
 <span class="reiniciar-quizz" onclick="abrirQuizz(quizzAberto)">Reiniciar Quizz</span>
 <span class="voltar-home" onclick="estadoInicial()">Voltar pra home</span>`
 
+    const voltarHome = document.querySelector(".voltar-home")
+    voltarHome.scrollIntoView()
 };
 
 /*:::::Fim da Trocas entre telas Abrir Quizz (joão):::::*/
