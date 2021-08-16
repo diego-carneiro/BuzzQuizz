@@ -69,10 +69,10 @@ function abrirQuizz(elemento) {
     //Embaralhar lista de perguntas
     let listaPerguntas = quizzIndividual.questions
 
-    listaPerguntas.sort(comparador); 
+    listaPerguntas.sort(comparador);
 
-    function comparador() { 
-        return Math.random() - 0.5; 
+    function comparador() {
+        return Math.random() - 0.5;
     }
 
 
@@ -87,7 +87,7 @@ function abrirQuizz(elemento) {
         let listaRespostas = [];
 
         //gerar respostas para lista
-        for (i_2 = 0; i_2 < listaPerguntas[i].answers.length; i_2 ++) {
+        for (i_2 = 0; i_2 < listaPerguntas[i].answers.length; i_2++) {
             const respostaIndividual = listaPerguntas[i].answers[i_2];
             let corTexto;
 
@@ -96,7 +96,7 @@ function abrirQuizz(elemento) {
             } else {
                 corTexto = "vermelho"
             };
-            
+
             listaRespostas.push(`<div class="container-resposta-indivual classe${i} ${corTexto} nao-modificado" id = "${i}" onclick="selecionarResposta(this)" type"blablabla">
             <img src="${respostaIndividual.image}">
             <span>${respostaIndividual.text}</span>
@@ -104,17 +104,17 @@ function abrirQuizz(elemento) {
         };
 
         //embaralhar lista de respostas
-        listaRespostas.sort(comparador); 
+        listaRespostas.sort(comparador);
 
-        function comparador() { 
-            return Math.random() - 0.5; 
+        function comparador() {
+            return Math.random() - 0.5;
         }
 
 
         //varrer a lista de respostas e ir adicionando em uma string
         let stringRespostas = '';
 
-        for (i_2 = 0; i_2 < listaRespostas.length; i_2 ++) {
+        for (i_2 = 0; i_2 < listaRespostas.length; i_2++) {
             stringRespostas += listaRespostas[i_2]
         }
 
@@ -126,7 +126,8 @@ function abrirQuizz(elemento) {
         let pontoCorId = "." + corId;
 
         //Adicionar mudaças ao DOM
-        pagInicial.innerHTML += `<div class="container-pergunta-individual">
+
+        pagInicial.innerHTML += `<div class="container-pergunta-individual display-none">
         <div class="container-titulo-pergunta-individual  ${corId}">
             <h2>${listaPerguntas[i].title}</h2>
         </div>
@@ -135,6 +136,9 @@ function abrirQuizz(elemento) {
         </div>
     </div>`
 
+        //tirar display-none da primeira pergunta
+        const primeiraPergunta = document.querySelector(".container-pergunta-individual")
+        primeiraPergunta.classList.remove("display-none")
 
         //mudar cor do container título
         let containerTituloPerguntaIndividual = document.querySelector(pontoCorId);
@@ -162,6 +166,18 @@ function selecionarResposta(elemento) {
     elemento.classList.remove("nao-selecionado");
     elemento.classList.add("selecionado");
 
+    //tirar display-none da proxima pergunta
+    const proximaPergunta = document.querySelector(".container-pergunta-individual.display-none")
+
+    if (proximaPergunta !== null) {
+        setTimeout(aparecerProximaPergunta, 2000);
+        
+    }
+
+    function aparecerProximaPergunta(){
+        proximaPergunta.classList.remove("display-none")
+        proximaPergunta.scrollIntoView()
+    }
 
     //checar fim do quizz
     checarFimQuizz();
@@ -182,7 +198,7 @@ function renderizarFimQuizz() {
 
     let nivelAtingido = niveisQuiz[0];
 
-    for (i = 0; i < niveisQuiz.length; i ++) {
+    for (i = 0; i < niveisQuiz.length; i++) {
         console.log(niveisQuiz[i].minValue);
         if (porcentagemAcertos > niveisQuiz[i].minValue) {
             nivelAtingido = niveisQuiz[i];
@@ -220,8 +236,8 @@ function estadoInicial() {
     <div class="caixa-quizz">
     </div>
 </div>`
-    
-    capturarQuizzes() 
+
+    capturarQuizzes()
 }
 
 function subirCriação_1() {
