@@ -171,10 +171,10 @@ function selecionarResposta(elemento) {
 
     if (proximaPergunta !== null) {
         setTimeout(aparecerProximaPergunta, 2000);
-        
+
     }
 
-    function aparecerProximaPergunta(){
+    function aparecerProximaPergunta() {
         proximaPergunta.classList.remove("display-none")
         proximaPergunta.scrollIntoView()
     }
@@ -240,18 +240,93 @@ function estadoInicial() {
     capturarQuizzes()
 }
 
+/*:::::Construção do objeto para criação:::::*/
+
+let quizzCriado = {
+    title: "Título do quizz",
+    image: "https://http.cat/411.jpg",
+    questions: [
+        {
+            title: "Título da pergunta 1",
+            color: "#123456",
+            answers: [
+                {
+                    text: "Texto da resposta 1",
+                    image: "https://http.cat/411.jpg",
+                    isCorrectAnswer: true
+                },
+                {
+                    text: "Texto da resposta 2",
+                    image: "https://http.cat/412.jpg",
+                    isCorrectAnswer: false
+                }
+            ]
+        },
+        {
+            title: "Título da pergunta 2",
+            color: "#123456",
+            answers: [
+                {
+                    text: "Texto da resposta 1",
+                    image: "https://http.cat/411.jpg",
+                    isCorrectAnswer: true
+                },
+                {
+                    text: "Texto da resposta 2",
+                    image: "https://http.cat/412.jpg",
+                    isCorrectAnswer: false
+                }
+            ]
+        },
+        {
+            title: "Título da pergunta 3",
+            color: "#123456",
+            answers: [
+                {
+                    text: "Texto da resposta 1",
+                    image: "https://http.cat/411.jpg",
+                    isCorrectAnswer: true
+                },
+                {
+                    text: "Texto da resposta 2",
+                    image: "https://http.cat/412.jpg",
+                    isCorrectAnswer: false
+                }
+            ]
+        }
+    ],
+    levels: [
+        {
+            title: "Título do nível 1",
+            image: "https://http.cat/411.jpg",
+            text: "Descrição do nível 1",
+            minValue: 0
+        },
+        {
+            title: "Título do nível 2",
+            image: "https://http.cat/412.jpg",
+            text: "Descrição do nível 2",
+            minValue: 50
+        }
+    ]
+}
+
+/*:::::Fim de Construção do objeto para criação:::::*/
+
 function subirCriação_1() {
+
+    //abrir tela
     pagInicial.innerHTML = `<div class="corpo-pagina-criacao criacao_1">
     <div class="conteudo-criacao">
         <p class="instrucao">Comece pelo começo</p>
         <div class="dados-quizz_1">
-            <input placeholder="   Título do seu quizz" id="input-box">
-            <input placeholder="   URL da imagem do seu quizz" id="input-box">
-            <input placeholder="   Quantidade de perguntas do quizz" id="input-box">
-            <input placeholder="   Quantidade de níveis do quizz" id="input-box">
+            <input placeholder="   Título do seu quizz" id="input-box" class="criacao-titulo">
+            <input placeholder="   URL da imagem do seu quizz" id="input-box" class="criacao-img">
+            <input placeholder="   Quantidade de perguntas do quizz" id="input-box" class="criacao-quantidade-perguntas">
+            <input placeholder="   Quantidade de níveis do quizz" id="input-box" class="criacao-quantidade-niveis">
 
         </div>
-        <div class="botao-prosseguir" onclick="subirCriação_2()">
+        <div class="botao-prosseguir" onclick="verificarCriacao_1()">
             <p class="texto-botao-prosseguir">Prosseguir para criar perguntas</p>
         </div>
         <div class="botao-voltar" onclick="estadoInicial()">
@@ -261,7 +336,46 @@ function subirCriação_1() {
 </div>`
 };
 
+function verificarCriacao_1() {
+    //adicionar dados no objeto criado
+    const criacaoTitulo = document.querySelector(".criacao-titulo").value;
+    const criacaoImg = document.querySelector(".criacao-img").value;
+    const criacaoQuantidadePerguntas = Number(document.querySelector(".criacao-quantidade-perguntas").value);
+    const criacaoQuantidadeNiveis = Number(document.querySelector(".criacao-quantidade-niveis").value);
+
+    //criar variáveis booleans de verificação
+    const tituloVerificado = criacaoTitulo.length >= 20 && criacaoTitulo.length <= 65;
+    console.log("titulo? " + tituloVerificado + criacaoTitulo);
+    
+    const imgVerificado = validateURL(criacaoImg);
+    console.log("img? " + imgVerificado + criacaoImg)
+
+    const quantidadePerguntasVerificado = !isNaN(criacaoQuantidadePerguntas) && criacaoQuantidadePerguntas >= 3;
+    console.log("qntPer? " + quantidadePerguntasVerificado + criacaoQuantidadePerguntas)
+
+    //aplicar verificação
+    if (tituloVerificado && imgVerificado && quantidadePerguntasVerificado){
+        quizzCriado.title = criacaoTitulo;
+        quizzCriado.image = criacaoImg;
+
+        console.log("value: " + quizzCriado.title);
+        console.log("value: " + quizzCriado.image);
+        subirCriação_2()
+    } else {
+        alert("preencha os dados corretamente")
+        subirCriação_1()
+    }
+    
+    //adicionar título
+    
+
+    
+}
+
 function subirCriação_2() {
+
+    
+    //abrir tela
     pagInicial.innerHTML = `<div class="corpo-pagina-criacao criacao_2">
     <div class="conteudo-criacao">
         <p class="instrucao">Crie suas perguntas</p>
@@ -302,6 +416,8 @@ function subirCriação_2() {
 };
 
 function subirCriação_3() {
+
+    //abrir tela
     pagInicial.innerHTML = `<div class="corpo-pagina-criacao criacao_3">
     <div class="conteudo-criacao">
         <p class="instrucao">Agora, decida os níveis</p>
@@ -331,6 +447,8 @@ function subirCriação_3() {
 };
 
 function subirCriação_4() {
+
+    //abrir tela
     pagInicial.innerHTML = `<div class="corpo-pagina-criacao criacao_4">
     <div class="conteudo-criacao">
         <p class="instrucao">Seu quizz está pronto!</p>
@@ -347,6 +465,12 @@ function subirCriação_4() {
 
 /*:::::Fim de trocas entre telas para criação:::::*/
 
+/*:::::Verificador de URL:::::*/
+function validateURL(textval) {
+    var urlregex = /^(https?|ftp):\/\/([a-zA-Z0-9.-]+(:[a-zA-Z0-9.&%$-]+)*@)*((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])){3}|([a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]+\.(com|edu|gov|int|mil|net|org|biz|arpa|info|name|pro|aero|coop|museum|[a-zA-Z]{2}))(:[0-9]+)*(\/($|[a-zA-Z0-9.,?'\\+&%$#=~_-]+))*$/;
+    return urlregex.test(textval);
+}
+/*:::::Fim do Verificador de URL:::::*/
 
 /*:::::Adição de Níveis:::::*/
 
@@ -366,4 +490,5 @@ function subirCriação_4() {
 // }
 
 /*:::::Fim da adição de Níveis:::::*/
+
 
