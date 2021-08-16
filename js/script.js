@@ -16,7 +16,7 @@ let listaQuizzesImportados;
 capturarQuizzes();
 
 
-//Capturar Quiz
+//Capturar Quizzes
 function capturarQuizzes() {
     const promise = axios.get(quizURL);
 
@@ -75,11 +75,11 @@ function abrirQuizz(elemento) {
 
 
 
-        //armazenar string das respostas em uma variável
-        let stringRespostas = '';
+        //armazenar lista das respostas em uma variável
+        let listaRespostas = [];
 
-        //gerar respostas
-        for (i_2 = 0; i_2 < quizzIndividual.questions[i].answers.length; i_2++) {
+        //gerar respostas para lista
+        for (i_2 = 0; i_2 < quizzIndividual.questions[i].answers.length; i_2 ++) {
             const respostaIndividual = quizzIndividual.questions[i].answers[i_2];
             let corTexto;
 
@@ -88,15 +88,28 @@ function abrirQuizz(elemento) {
             } else {
                 corTexto = "vermelho"
             };
-
             
-            stringRespostas += `<div class="container-resposta-indivual classe${i} ${corTexto} nao-modificado" id = "${i}" onclick="selecionarResposta(this)" type"blablabla">
+            listaRespostas.push(`<div class="container-resposta-indivual classe${i} ${corTexto} nao-modificado" id = "${i}" onclick="selecionarResposta(this)" type"blablabla">
             <img src="${respostaIndividual.image}">
             <span>${respostaIndividual.text}</span>
-        </div>`;
-
-
+        </div>`);
         };
+
+        //embaralhar lista de respostas
+        listaRespostas.sort(comparador); 
+
+        function comparador() { 
+            return Math.random() - 0.5; 
+        }
+
+
+        //varrer a lista de respostas e ir adicionando em uma string
+        let stringRespostas = '';
+
+        for (i_2 = 0; i_2 < listaRespostas.length; i_2 ++) {
+            stringRespostas += listaRespostas[i_2]
+        }
+
 
         //mudar a cor do container titulo pergunta individual
         let corId = "cor" + i;
@@ -149,7 +162,7 @@ function selecionarResposta(elemento) {
 function checarFimQuizz() {
     const naoModificado = document.querySelector(".nao-modificado")
     if (naoModificado === null) {
-        renderizarFimQuizz();
+        setTimeout(renderizarFimQuizz, 2000);
     }
 }
 
