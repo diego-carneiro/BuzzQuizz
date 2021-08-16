@@ -43,11 +43,13 @@ function renderizarQuizes(quizzes) {
 
 let quantidadePerguntas;
 let niveisQuiz;
+let quizzAberto;
 
 function abrirQuizz(elemento) {
 
-    //Armazenar quizz individual em uma variável
+    quizzAberto = elemento;
 
+    //Armazenar quizz individual em uma variável
 
     const quizzID = elemento.id;
     const quizzIndividual = listaQuizzesImportados[quizzID];
@@ -174,7 +176,10 @@ function renderizarFimQuizz() {
         <img src="${nivelAtingido.image}">
         <p>${nivelAtingido.text}</p>
     </div>
-</div>`
+</div>
+
+<span class="reiniciar-quizz" onclick="abrirQuizz(quizzAberto)">Reiniciar Quizz</span>
+<span class="voltar-home" onclick="estadoInicial()">Voltar pra home</span>`
 
 };
 

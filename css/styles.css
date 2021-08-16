@@ -328,6 +328,26 @@
     padding: 21px;
 }
 
+.reiniciar-quizz {
+    width: 259px;
+    height: 52px;
+    background-color: #EC362D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 17px;
+    font-size: 21px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.voltar-home {
+    color: #818181;
+    font-size: 21px;
+}
+
+
+
 /*::::::::::Fim de Página de um Quizz (joão)::::::::::*/
 
 /*::::::::::Estilos Gerais::::::::::*/
