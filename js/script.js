@@ -75,7 +75,7 @@ function mostrarRespostasIndividuais(respostas){
     let retornoString = "";
     for (let i = 0; i < respostas.length; i++){
         retorno.push(
-        `<div class="container-resposta-indivual">
+        `<div class="container-resposta-indivual ${(respostas[i].isCorrectAnswer === true) ? "resposta-correta" : "resposta-errada"}" onclick="selecionarResposta(this)">
             <img src="${respostas[i].image}"/>
             <span>${respostas[i].text}</span>
         </div>`);
@@ -84,10 +84,41 @@ function mostrarRespostasIndividuais(respostas){
     for (let j = 0; j < retorno.length; j++){
         retornoString += retorno[j];
     }
-    console.log(retorno);
-    console.log(retornoString);
     return retornoString;
 }
 function randomizador() { 
 	return Math.random() - 0.5; 
+}
+function selecionarResposta(selecionada){
+    const paiSelecionada = selecionada.parentNode;
+    const avoSelecionada = paiSelecionada.parentNode;
+    const irmasSelecionada = paiSelecionada.children;
+    const irmasErradas = paiSelecionada.querySelectorAll(".resposta-errada");
+    const irmaCerta = paiSelecionada.querySelector(".resposta-correta");
+    for (let i = 0; i < irmasSelecionada.length; i++){
+        irmasSelecionada[i].classList.add("nao-selecionado");
+        irmasSelecionada[i].removeAttribute("onclick");
+    }
+    for (let i = 0; i < irmasErradas.length; i++){
+        irmasErradas[i].classList.add("vermelho");
+    }
+    irmaCerta.classList.add("verde");
+    selecionada.classList.remove("nao-selecionado");
+
+    setTimeout(mostrarProximaQuestao, 2000, avoSelecionada);
+}
+function mostrarProximaQuestao(caixaAtual){
+    const perguntas = document.querySelectorAll(".container-pergunta-individual");
+    let posicao = 0;
+    for (let i = 0; i < perguntas.length; i++){
+        if(perguntas[i] === caixaAtual){
+            posicao = i;
+        }
+    }
+    if ((posicao + 1) < perguntas.length){
+        perguntas[posicao+1].scrollIntoView({behavior: "smooth", block: "center"});
+    }
+    else{
+        document.querySelector(".container-fim-quizz").scrollIntoView({behavior: "smooth", block: "center"});
+    }
 }
