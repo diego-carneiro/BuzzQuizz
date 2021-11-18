@@ -110,15 +110,22 @@ function selecionarResposta(selecionada){
 function mostrarProximaQuestao(caixaAtual){
     const perguntas = document.querySelectorAll(".container-pergunta-individual");
     let posicao = 0;
+    let scrollou = false;
+    //Pedaço de código extra, utilizado para ver se o usuário já scrollou e assim desativar o scroll 
+    window.addEventListener('scroll', (e) => {  
+        scrollou = true;
+        console.log(scrollou);
+    })
+
     for (let i = 0; i < perguntas.length; i++){
         if(perguntas[i] === caixaAtual){
             posicao = i;
         }
     }
-    if ((posicao + 1) < perguntas.length){
+    if ((posicao + 1) < perguntas.length && !scrollou){
         perguntas[posicao+1].scrollIntoView({behavior: "smooth", block: "center"});
     }
-    else{
+    else if (!scrollou){
         document.querySelector(".container-fim-quizz").scrollIntoView({behavior: "smooth", block: "center"});
     }
 }
