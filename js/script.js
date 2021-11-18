@@ -11,7 +11,6 @@ function disporQuizes(){
 function imprimirQuizes(resposta){
     const listaQuizes = resposta.data;
     const caixaQuizes = document.querySelector(".caixa-quizz");
-    console.log(listaQuizes);
     listaQuizes.map(quiz =>
         caixaQuizes.innerHTML += 
         `<div class="quizzes-de-outros" onclick="irPraTelaQuiz(${quiz.id})">
@@ -45,7 +44,7 @@ function telaQuiz(resposta){
             </div>        
         </div>`
     }
-
+    
     corpo.innerHTML += 
         `<div class="pagina-de-um-quizz">
             <div class="container-foto-de-capa-quizz">
@@ -53,17 +52,42 @@ function telaQuiz(resposta){
                 <span>${quizAtual.title}</span>
             </div>
             ${caixaRespostas}
+            <div class="container-fim-quizz">
+                <div class="container-resultado">
+                    <h1>Resultado h1</h1>
+                </div>
+                <div class="imagem-e-descricao">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/Robert_C._Martin_surrounded_by_computers.jpg"/>
+                    <p>    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis et minus beatae iure delectus velit ratione iste quae impedit? Hic qui iure nisi molestiae, voluptate quidem dignissimos magnam eaque perspiciatis?
+                    </p>
+                </div>
+                <button class="reiniciar-quizz">
+                    Reiniciar Quizz
+                </button>
+                <button class="voltar-home">
+                    Voltar para home
+                </button>
+            </div>
         </div>`
 }
 function mostrarRespostasIndividuais(respostas){
-    let retorno = "";
-
+    let retorno = [];
+    let retornoString = "";
     for (let i = 0; i < respostas.length; i++){
-        retorno +=
+        retorno.push(
         `<div class="container-resposta-indivual">
             <img src="${respostas[i].image}"/>
             <span>${respostas[i].text}</span>
-        </div>`
+        </div>`);
     }
-    return retorno;
+    retorno.sort(randomizador);
+    for (let j = 0; j < retorno.length; j++){
+        retornoString += retorno[j];
+    }
+    console.log(retorno);
+    console.log(retornoString);
+    return retornoString;
+}
+function randomizador() { 
+	return Math.random() - 0.5; 
 }
