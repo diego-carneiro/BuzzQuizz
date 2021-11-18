@@ -206,7 +206,9 @@
 /*::::::::::Página de um Quizz (joão)::::::::::*/
 .pagina-de-um-quizz{
     width: 100%;
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .container-foto-de-capa-quizz{
