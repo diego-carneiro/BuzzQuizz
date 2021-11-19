@@ -1,3 +1,6 @@
+let qtdAcertos = 0;
+let totalRespostas = 0;
+
 function pageSwitch() {
     
     const page = document.querySelector(".hidden")
@@ -28,7 +31,9 @@ function irPraTelaQuiz(id){
     quizAtualObj.then(telaQuiz);
 }
 function telaQuiz(resposta){
+    console.log(qtdAcertos);
     const quizAtual = resposta.data;
+
     const corpo = document.querySelector("body");
 
     let caixaRespostas = "";
@@ -40,7 +45,7 @@ function telaQuiz(resposta){
                 <h2>${quizAtual.questions[i].title}</h2>
             </div>
             <div class="container-respostas-pergunta-individual">
-                ${mostrarRespostasIndividuais(quizAtual.questions[i].answers)}
+                ${mostrarRespostasIndividuais(quizAtual.questions[i].answers, quizAtual.questions.length)}
             </div>        
         </div>`
     }
@@ -55,7 +60,7 @@ function telaQuiz(resposta){
             
             <div class="container-fim-quizz">
                 <div class="container-resultado">
-                    <h1>Resultado h1</h1>
+                    <h1>${quizAtual.levels}</h1>
                 </div>
                 <div class="imagem-e-descricao">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/Robert_C._Martin_surrounded_by_computers.jpg"/>
@@ -72,12 +77,12 @@ function telaQuiz(resposta){
         
         </div>`
 }
-function mostrarRespostasIndividuais(respostas){
+function mostrarRespostasIndividuais(respostas, qtdOpcoes){
     let retorno = [];
     let retornoString = "";
     for (let i = 0; i < respostas.length; i++){
         retorno.push(
-        `<div class="container-resposta-indivual ${(respostas[i].isCorrectAnswer === true) ? "resposta-correta" : "resposta-errada"}" onclick="selecionarResposta(this)">
+        `<div class="container-resposta-indivual ${(respostas[i].isCorrectAnswer === true) ? "resposta-correta" : "resposta-errada"}" onclick="selecionarResposta(this, ${qtdOpcoes})">
             <img src="${respostas[i].image}"/>
             <span>${respostas[i].text}</span>
         </div>`);
@@ -91,7 +96,8 @@ function mostrarRespostasIndividuais(respostas){
 function randomizador() { 
 	return Math.random() - 0.5; 
 }
-function selecionarResposta(selecionada){
+function selecionarResposta(selecionada, qtdOpcoes){
+    console.log(qtdAcertos);
     const paiSelecionada = selecionada.parentNode;
     const irmasSelecionada = paiSelecionada.children;
     const avoSelecionada = paiSelecionada.parentNode;
@@ -105,10 +111,23 @@ function selecionarResposta(selecionada){
     for (let i = 0; i < irmasErradas.length; i++){
         irmasErradas[i].classList.add("vermelho");
     }
+    if(selecionada.classList.contains("resposta-correta")){
+        qtdAcertos++;
+    }
     irmaCerta.classList.add("verde");
     selecionada.classList.remove("nao-selecionado");
+    totalRespostas++;
+
+    if(totalRespostas === qtdOpcoes){
+      const porcentagem = Math.round((qtdAcertos/qtdOpcoes)*100);
+      finalizacaoQuizz(porcentagem);
+    }
 
     setTimeout(mostrarProximaQuestao, 2000, avoSelecionada);
+}
+
+function finalizacaoQuizz (porcentagem){
+   console.log(porcentagem);
 }
 function mostrarProximaQuestao(caixaAtual){
     const perguntas = document.querySelectorAll(".container-pergunta-individual");
