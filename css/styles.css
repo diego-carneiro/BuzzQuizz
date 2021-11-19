@@ -60,6 +60,13 @@
     border-radius: 50px;
     border: 1px dashed #EC362D;
 }
+.possuiQuiz{
+    width: 40px;
+    border-radius: 50;
+    border: none;
+    background-color: transparent;
+    font-size: 30px;
+}
 /*::::::::::Todos os Quizzes::::::::::*/
 .caixa-quizz{
     display: flex;
@@ -123,13 +130,17 @@
     width: 600px;
     height: 256px;
     background-color: #FFFFFF;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05)
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+
+    display: flex;
+    flex-direction: column;
 }
 #input-box{
     width: 564px;
     height: 46px;
     margin-bottom: 10px;
     margin-left: 18px;
+    padding-left: 10px;
     font-size: 19px;
     font-style: italic;
     border: 1px solid #D1D1D1;
@@ -142,12 +153,14 @@
     background-color: #EC362D;
     margin-top: 20px;
     margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .texto-botao-prosseguir{
     font-size: 20px;
     color: white;
     text-align: center;
-    margin-top: 18px;
 }
 .voltar{
     width: 136px;
@@ -157,6 +170,9 @@
     background-color: white;
     border-radius: 50px;
     border: 1px dashed #EC362D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 /*:::::::::::Fim da Tela de Criação de Quizz 1::::::::::*/
 
@@ -363,6 +379,11 @@ body {
     font-family: 'Roboto', sans-serif;
     background-color: #fafafa;
 }
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 /*::::::::::Classes de Suporte::::::::::*/
 .hidden{
@@ -379,6 +400,17 @@ body {
 
 .nao-modificado {
     color: black;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 /*:::::Versão Mobile:::::*/

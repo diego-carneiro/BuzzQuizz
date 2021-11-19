@@ -52,6 +52,7 @@ function telaQuiz(resposta){
                 <span>${quizAtual.title}</span>
             </div>
             ${caixaRespostas}
+            
             <div class="container-fim-quizz">
                 <div class="container-resultado">
                     <h1>Resultado h1</h1>
@@ -68,6 +69,7 @@ function telaQuiz(resposta){
                     Voltar para home
                 </button>
             </div>
+        
         </div>`
 }
 function mostrarRespostasIndividuais(respostas){
@@ -91,8 +93,9 @@ function randomizador() {
 }
 function selecionarResposta(selecionada){
     const paiSelecionada = selecionada.parentNode;
-    const avoSelecionada = paiSelecionada.parentNode;
     const irmasSelecionada = paiSelecionada.children;
+    const avoSelecionada = paiSelecionada.parentNode;
+    
     const irmasErradas = paiSelecionada.querySelectorAll(".resposta-errada");
     const irmaCerta = paiSelecionada.querySelector(".resposta-correta");
     for (let i = 0; i < irmasSelecionada.length; i++){
