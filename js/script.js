@@ -1,5 +1,7 @@
 let qtdAcertos = 0;
 let totalRespostas = 0;
+let porcentagemDeAcertos = 0;
+let levels;
 
 function pageSwitch() {
     
@@ -31,12 +33,14 @@ function irPraTelaQuiz(id){
     quizAtualObj.then(telaQuiz);
 }
 function telaQuiz(resposta){
-    console.log(qtdAcertos);
+    console.log(resposta);
     const quizAtual = resposta.data;
+    levels = resposta.data.levels;
 
     const corpo = document.querySelector("body");
 
     let caixaRespostas = "";
+    console.log(resposta.data.levels);
 
     for (let i = 0; i < quizAtual.questions.length; i++){
         caixaRespostas +=
@@ -49,7 +53,9 @@ function telaQuiz(resposta){
             </div>        
         </div>`
     }
-    
+
+    //for (let i = 0; i < quizAtual.levels.length; i++){
+
     corpo.innerHTML += 
         `<div class="pagina-de-um-quizz">
             <div class="container-foto-de-capa-quizz">
@@ -57,13 +63,14 @@ function telaQuiz(resposta){
                 <span>${quizAtual.title}</span>
             </div>
             ${caixaRespostas}
-            <div class="container-fim-quizz">
+
+            <div class="container-fim-quizz hidden">
                 <div class="container-resultado">
-                    <h1>${quizAtual.levels}</h1>
+                    <h1 class="tituloFimQuizz">${porcentagemDeAcertos}% de acerto: ${quizAtual.levels[0].title}</h1>
                 </div>
                 <div class="imagem-e-descricao">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/Robert_C._Martin_surrounded_by_computers.jpg"/>
-                    <p>    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis et minus beatae iure delectus velit ratione iste quae impedit? Hic qui iure nisi molestiae, voluptate quidem dignissimos magnam eaque perspiciatis?
+                    <img src=${quizAtual.levels[0].image}"/>
+                    <p>${quizAtual.levels[0].text}
                     </p>
                 </div>
                 <button class="reiniciar-quizz">
@@ -74,6 +81,7 @@ function telaQuiz(resposta){
                 </button>
             </div>
         </div>`
+    
 }
 function mostrarRespostasIndividuais(respostas, qtdOpcoes){
     let retorno = [];
@@ -124,7 +132,15 @@ function selecionarResposta(selecionada, qtdOpcoes){
 }
 
 function finalizacaoQuizz (porcentagem){
-   console.log(porcentagem);
+    console.log(levels);
+    const fimQuizz = document.querySelector(".container-fim-quizz");
+    fimQuizz.classList.remove('hidden');
+    const titleQuizz = fimQuizz.querySelector(".tituloFimQuizz");
+    titleQuizz.innerHTML = `${porcentagem}% de acerto: `;
+    const imgFimQuizz = fimQuizz.querySelector("img");
+    imgFimQuizz.setAttribute("src",levels[0].image);
+   
+   
 }
 function mostrarProximaQuestao(caixaAtual){
     const perguntas = document.querySelectorAll(".container-pergunta-individual");
