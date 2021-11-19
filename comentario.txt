@@ -1,0 +1,14 @@
+- Linha 44 passa um array com as respostas da pergunta.
+- Linha 79 operador ternário, não me lembro muito bem como usa mas vai retornar um valor ou outro a depender se a condição for true.
+- Não entendi a lógica da linha 84:     retorno.sort(randomizador);
+
+
+function disporQuizes():
+- Função para obter todos os quizzes, a promise.then vai para a function imprimirQuizes.
+
+function imprimirQuizes():
+- A função vai pegar o data da promise com :
+  resposta.data
+- Vamos fazer um acesso na div chamada "caixa-quizz" com:
+  const caixaQuizes = document.querySelector(".caixa-quizz");
+- Vamos alterar o innerHTML 
