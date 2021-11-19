@@ -70,7 +70,7 @@ function telaQuiz(resposta){
                 </div>
                 <div class="imagem-e-descricao">
                     <img src=${quizAtual.levels[0].image}"/>
-                    <p>${quizAtual.levels[0].text}
+                    <p class"textoQuizz">${quizAtual.levels[0].text}
                     </p>
                 </div>
                 <button class="reiniciar-quizz">
@@ -139,6 +139,8 @@ function finalizacaoQuizz (porcentagem){
     titleQuizz.innerHTML = `${porcentagem}% de acerto: `;
     const imgFimQuizz = fimQuizz.querySelector("img");
     imgFimQuizz.setAttribute("src",levels[0].image);
+    //const textoDoQuizz = fimQuizz.querySelector(".textoQuizz");
+    //textoDoQuizz.innerHTML = `${resposta.data.levels[0].text}`
    
    
 }
