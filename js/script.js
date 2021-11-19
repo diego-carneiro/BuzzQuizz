@@ -80,6 +80,7 @@ function telaQuiz(resposta){
                     Voltar para home
                 </button>
             </div>
+        
         </div>`
     
 }
@@ -105,8 +106,9 @@ function randomizador() {
 function selecionarResposta(selecionada, qtdOpcoes){
     console.log(qtdAcertos);
     const paiSelecionada = selecionada.parentNode;
-    const avoSelecionada = paiSelecionada.parentNode;
     const irmasSelecionada = paiSelecionada.children;
+    const avoSelecionada = paiSelecionada.parentNode;
+    
     const irmasErradas = paiSelecionada.querySelectorAll(".resposta-errada");
     const irmaCerta = paiSelecionada.querySelector(".resposta-correta");
     for (let i = 0; i < irmasSelecionada.length; i++){
