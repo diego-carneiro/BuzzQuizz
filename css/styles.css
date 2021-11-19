@@ -146,6 +146,9 @@
     border: 1px solid #D1D1D1;
     border-radius: 5px;
 }
+#input-box:first-child{
+    margin-top: 10px;
+}
 .botao-prosseguir{
     width: 370px;
     height: 54px;
@@ -156,8 +159,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
-.texto-botao-prosseguir{
     font-size: 20px;
     color: white;
     text-align: center;
@@ -179,7 +180,9 @@
 /*:::::::::::Tela de Criação de Quizz 2::::::::::*/
 .dados-quizz_2{
     width: 600px;
-    height: 750px;
+    height: auto;
+
+    margin-bottom: 50px;
 }
 .input-title{
     width: 300px;
@@ -209,6 +212,26 @@
     width: 26px;
     height: 23px;
     margin-right: 10px;
+}
+.colapsavel {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+.ativo, .colapsavel:hover {
+    background-color: #ccc;
+}
+.conteudo-pergunta{
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
 }
 /*:::::::::::Fim da Tela de Criação de Quizz 2::::::::::*/
 
@@ -383,7 +406,7 @@ form{
     display: flex;
     flex-direction: column;
     align-items: center;
-}
+}   
 
 /*::::::::::Classes de Suporte::::::::::*/
 .hidden{
