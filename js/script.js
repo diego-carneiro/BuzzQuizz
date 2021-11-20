@@ -55,7 +55,6 @@ function telaQuiz(resposta){
 
     corpo.innerHTML += 
         `
-        <form id="mainContent">
             <div class="pagina-de-um-quizz">
                 <div class="container-foto-de-capa-quizz">
                     <img src="${quizAtual.image}"/>
@@ -80,20 +79,20 @@ function telaQuiz(resposta){
                     </button>
                 </div>
             
-            </div>
-        </form>    
+            </div> 
         `
     
 }
 
-function reiniciarQuizz(quizId){
+function reiniciarQuizz(quizAtual){
+    console.log(quizAtual)
     const paginaDoQuizzReiniciada = document.querySelector(".pagina-de-um-quizz");
     qtdAcertos = 0;
     totalRespostas = 0;
     porcentagemDeAcertos = 0;
     paginaDoQuizzReiniciada.remove();
 
-    irPraTelaQuiz(quizId);
+    irPraTelaQuiz(quizAtual);
 }
 
 function voltarHome(voltar){
