@@ -136,11 +136,9 @@
     flex-direction: column;
 }
 #input-box{
-    width: 564px;
+    width: 95%;
     height: 46px;
     margin-bottom: 10px;
-    margin-left: 18px;
-    padding-left: 10px;
     font-size: 19px;
     font-style: italic;
     border: 1px solid #D1D1D1;
@@ -178,17 +176,32 @@
 /*:::::::::::Fim da Tela de Criação de Quizz 1::::::::::*/
 
 /*:::::::::::Tela de Criação de Quizz 2::::::::::*/
-.dados-quizz_2{
-    width: 600px;
+.conteudo-criacao{
     height: auto;
+    display: flex;
+    flex-direction: column;
+}
+.dados-quizz_2{
+    width: 90%;
+    height: 75px;
 
-    margin-bottom: 50px;
+    margin-bottom: 22px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 .input-title{
     width: 300px;
     font-size: 20px;
     font-weight: bold;
-    margin-left: 15px;
     margin-bottom: 12px;
     margin-top: 28px;
 }
@@ -214,24 +227,28 @@
     margin-right: 10px;
 }
 .colapsavel {
-    background-color: #eee;
-    color: #444;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 15px;
+  color: black;
+  cursor: pointer;
+  border: none;
+  text-align: left;
+  outline: none;
 }
-.ativo, .colapsavel:hover {
-    background-color: #ccc;
+.ativo {
+    height: auto;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    background-color: #FFF;
+    margin-bottom: 0;
 }
 .conteudo-pergunta{
-    padding: 0 18px;
+    width: 90%;
     display: none;
+    flex-direction: column;
+    background-color: #FFF;
     overflow: hidden;
-    background-color: #f1f1f1;
+    margin-bottom: 22px;
 }
 /*:::::::::::Fim da Tela de Criação de Quizz 2::::::::::*/
 

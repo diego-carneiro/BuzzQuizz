@@ -72,7 +72,7 @@ function telaQuiz(resposta){
                         <p class= "textoQuizz">${quizAtual.levels[0].text}
                         </p>
                     </div>
-                    <button class="reiniciar-quizz" onclick="reiniciarQuizz(this)">
+                    <button class="reiniciar-quizz" onclick="reiniciarQuizz(${quizAtual.id})">
                         Reiniciar Quizz
                     </button>
                     <button  id='fullReset' class="voltar-home" onclick="voltarHome(this)">
@@ -86,12 +86,12 @@ function telaQuiz(resposta){
     
 }
 
-function reiniciarQuizz(reiniciar,quizId){
+function reiniciarQuizz(quizId){
     const paginaDoQuizzReiniciada = document.querySelector(".pagina-de-um-quizz");
     qtdAcertos = 0;
     totalRespostas = 0;
     porcentagemDeAcertos = 0;
-    //paginaDoQuizzReiniciada.remove();
+    paginaDoQuizzReiniciada.remove();
 
     irPraTelaQuiz(quizId);
 }
@@ -174,7 +174,6 @@ function mostrarProximaQuestao(caixaAtual){
     //Pedaço de código extra, utilizado para ver se o usuário já scrollou e assim desativar o scroll 
     window.addEventListener('scroll', (e) => {  
         scrollou = true;
-        console.log(scrollou);
     })
 
     for (let i = 0; i < perguntas.length; i++){
