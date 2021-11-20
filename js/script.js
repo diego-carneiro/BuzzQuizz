@@ -40,7 +40,6 @@ function telaQuiz(resposta){
     const corpo = document.querySelector("body");
 
     let caixaRespostas = "";
-    console.log(resposta.data.levels);
 
     for (let i = 0; i < quizAtual.questions.length; i++){
         caixaRespostas +=
@@ -54,44 +53,57 @@ function telaQuiz(resposta){
         </div>`
     }
 
-    //for (let i = 0; i < quizAtual.levels.length; i++){
-
     corpo.innerHTML += 
-        `<div class="pagina-de-um-quizz">
-            <div class="container-foto-de-capa-quizz">
-                <img src="${quizAtual.image}"/>
-                <span>${quizAtual.title}</span>
-            </div>
-            ${caixaRespostas}
+        `
+        <form id="mainContent">
+            <div class="pagina-de-um-quizz">
+                <div class="container-foto-de-capa-quizz">
+                    <img src="${quizAtual.image}"/>
+                    <span>${quizAtual.title}</span>
+                </div>
+                ${caixaRespostas}
 
-            <div class="container-fim-quizz hidden">
-                <div class="container-resultado">
-                    <h1 class="tituloFimQuizz">${porcentagemDeAcertos}% de acerto: ${quizAtual.levels[0].title}</h1>
+                <div class="container-fim-quizz hidden">
+                    <div class="container-resultado">
+                        <h1 class="tituloFimQuizz">${porcentagemDeAcertos}% de acerto: ${quizAtual.levels[0].title}</h1>
+                    </div>
+                    <div class="imagem-e-descricao">
+                        <img src=${quizAtual.levels[0].image}"/>
+                        <p class= "textoQuizz">${quizAtual.levels[0].text}
+                        </p>
+                    </div>
+                    <button class="reiniciar-quizz" onclick="reiniciarQuizz(this)">
+                        Reiniciar Quizz
+                    </button>
+                    <button  id='fullReset' class="voltar-home" onclick="voltarHome(this)">
+                        Voltar para home
+                    </button>
                 </div>
-                <div class="imagem-e-descricao">
-                    <img src=${quizAtual.levels[0].image}"/>
-                    <p class= "textoQuizz">${quizAtual.levels[0].text}
-                    </p>
-                </div>
-                <button class="reiniciar-quizz" onclick="reiniciarQuizz(this)">
-                    Reiniciar Quizz
-                </button>
-                <button class="voltar-home" onclick="voltarHome(this)">
-                    Voltar para home
-                </button>
+            
             </div>
-        
-        </div>`
+        </form>    
+        `
     
 }
 
-function reiniciarQuizz(reiniciar, quizId){
-    // const paginaDoQuizzReiniciada = document.querySelector(".pagina-de-um-quizz").reload(true);
-    //irPraTelaQuiz(quizId);
+function reiniciarQuizz(reiniciar,quizId){
+    const paginaDoQuizzReiniciada = document.querySelector(".pagina-de-um-quizz");
+    qtdAcertos = 0;
+    totalRespostas = 0;
+    porcentagemDeAcertos = 0;
+    //paginaDoQuizzReiniciada.remove();
+
+    irPraTelaQuiz(quizId);
 }
 
 function voltarHome(voltar){
-    document.location.reload(true);
+    //document.location.reload(true);
+    let fullReset = document.getElementById('fullReset');
+
+    fullReset.addEventListener('click', function(e) {
+      location.reload();
+    }, false);
+    
 }
 function mostrarRespostasIndividuais(respostas, qtdOpcoes){
     let retorno = [];
