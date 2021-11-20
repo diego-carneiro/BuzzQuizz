@@ -70,19 +70,28 @@ function telaQuiz(resposta){
                 </div>
                 <div class="imagem-e-descricao">
                     <img src=${quizAtual.levels[0].image}"/>
-                    <p class"textoQuizz">${quizAtual.levels[0].text}
+                    <p class= "textoQuizz">${quizAtual.levels[0].text}
                     </p>
                 </div>
-                <button class="reiniciar-quizz">
+                <button class="reiniciar-quizz" onclick="reiniciarQuizz(this)">
                     Reiniciar Quizz
                 </button>
-                <button class="voltar-home">
+                <button class="voltar-home" onclick="voltarHome(this)">
                     Voltar para home
                 </button>
             </div>
         
         </div>`
     
+}
+
+function reiniciarQuizz(reiniciar, quizId){
+    // const paginaDoQuizzReiniciada = document.querySelector(".pagina-de-um-quizz").reload(true);
+    //irPraTelaQuiz(quizId);
+}
+
+function voltarHome(voltar){
+    document.location.reload(true);
 }
 function mostrarRespostasIndividuais(respostas, qtdOpcoes){
     let retorno = [];
@@ -142,7 +151,7 @@ function finalizacaoQuizz (porcentagem){
     const imgFimQuizz = fimQuizz.querySelector("img");
     imgFimQuizz.setAttribute("src",levels[0].image);
     //const textoDoQuizz = fimQuizz.querySelector(".textoQuizz");
-    //textoDoQuizz.innerHTML = `${resposta.data.levels[0].text}`
+    //textoDoQuizz.innerHTML = `${quizAtual.levels[0].text}`;
    
    
 }
