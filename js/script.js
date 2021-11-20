@@ -1,5 +1,7 @@
 let qtdAcertos = 0;
 let totalRespostas = 0;
+let porcentagemDeAcertos = 0;
+let levels;
 
 function pageSwitch() {
     
@@ -31,8 +33,9 @@ function irPraTelaQuiz(id){
     quizAtualObj.then(telaQuiz);
 }
 function telaQuiz(resposta){
-    console.log(qtdAcertos);
+    console.log(resposta);
     const quizAtual = resposta.data;
+    levels = resposta.data.levels;
 
     const corpo = document.querySelector("body");
 
@@ -49,33 +52,58 @@ function telaQuiz(resposta){
             </div>        
         </div>`
     }
-    
+
     corpo.innerHTML += 
-        `<div class="pagina-de-um-quizz">
-            <div class="container-foto-de-capa-quizz">
-                <img src="${quizAtual.image}"/>
-                <span>${quizAtual.title}</span>
-            </div>
-            ${caixaRespostas}
+        `
+        <form id="mainContent">
+            <div class="pagina-de-um-quizz">
+                <div class="container-foto-de-capa-quizz">
+                    <img src="${quizAtual.image}"/>
+                    <span>${quizAtual.title}</span>
+                </div>
+                ${caixaRespostas}
+
+                <div class="container-fim-quizz hidden">
+                    <div class="container-resultado">
+                        <h1 class="tituloFimQuizz">${porcentagemDeAcertos}% de acerto: ${quizAtual.levels[0].title}</h1>
+                    </div>
+                    <div class="imagem-e-descricao">
+                        <img src=${quizAtual.levels[0].image}"/>
+                        <p class= "textoQuizz">${quizAtual.levels[0].text}
+                        </p>
+                    </div>
+                    <button class="reiniciar-quizz" onclick="reiniciarQuizz(this)">
+                        Reiniciar Quizz
+                    </button>
+                    <button  id='fullReset' class="voltar-home" onclick="voltarHome(this)">
+                        Voltar para home
+                    </button>
+                </div>
             
-            <div class="container-fim-quizz">
-                <div class="container-resultado">
-                    <h1>${quizAtual.levels}</h1>
-                </div>
-                <div class="imagem-e-descricao">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/Robert_C._Martin_surrounded_by_computers.jpg"/>
-                    <p>    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis et minus beatae iure delectus velit ratione iste quae impedit? Hic qui iure nisi molestiae, voluptate quidem dignissimos magnam eaque perspiciatis?
-                    </p>
-                </div>
-                <button class="reiniciar-quizz">
-                    Reiniciar Quizz
-                </button>
-                <button class="voltar-home">
-                    Voltar para home
-                </button>
             </div>
-        
-        </div>`
+        </form>    
+        `
+    
+}
+
+function reiniciarQuizz(reiniciar,quizId){
+    const paginaDoQuizzReiniciada = document.querySelector(".pagina-de-um-quizz");
+    qtdAcertos = 0;
+    totalRespostas = 0;
+    porcentagemDeAcertos = 0;
+    //paginaDoQuizzReiniciada.remove();
+
+    irPraTelaQuiz(quizId);
+}
+
+function voltarHome(voltar){
+    //document.location.reload(true);
+    let fullReset = document.getElementById('fullReset');
+
+    fullReset.addEventListener('click', function(e) {
+      location.reload();
+    }, false);
+    
 }
 function mostrarRespostasIndividuais(respostas, qtdOpcoes){
     let retorno = [];
@@ -127,7 +155,17 @@ function selecionarResposta(selecionada, qtdOpcoes){
 }
 
 function finalizacaoQuizz (porcentagem){
-   console.log(porcentagem);
+    console.log(levels);
+    const fimQuizz = document.querySelector(".container-fim-quizz");
+    fimQuizz.classList.remove('hidden');
+    const titleQuizz = fimQuizz.querySelector(".tituloFimQuizz");
+    titleQuizz.innerHTML = `${porcentagem}% de acerto: `;
+    const imgFimQuizz = fimQuizz.querySelector("img");
+    imgFimQuizz.setAttribute("src",levels[0].image);
+    //const textoDoQuizz = fimQuizz.querySelector(".textoQuizz");
+    //textoDoQuizz.innerHTML = `${quizAtual.levels[0].text}`;
+   
+   
 }
 function mostrarProximaQuestao(caixaAtual){
     const perguntas = document.querySelectorAll(".container-pergunta-individual");
