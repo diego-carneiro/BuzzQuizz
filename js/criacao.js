@@ -168,6 +168,8 @@ function submeterPerguntas(){
         perguntas.push({title: titulos[i].value, color: cores[i].value, answers: respostasSubmetidas(i)});
     }
     infoBasica.questions = perguntas;
+    const requisition = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", infoBasica);
+    requisition.then(() => console.log("enviado"))
 }
 function respostasSubmetidas(index_pergunta){
     let retorno = []
