@@ -106,14 +106,14 @@ function criarTelaNiveis(){
             <ion-icon name="create-outline" class="pencil"></ion-icon>
             </button>
             <div class="conteudo-pergunta">
-                <input placeholder="Título do nível" id="input-box" type="text" minlength="10" required>
-                <input placeholder="% de acerto mínima" id="input-box" type="number" min="0" max="100" required>
-                <input placeholder="URL da imagem do nível" id="input-box" type="url" required>
-                <input placeholder="Descrição do nível" id="input-box" type="text" minlength="30">
+                <input placeholder="Título do nível" id="input-box" name="titulo-nivel" type="text" minlength="10" required>
+                <input placeholder="% de acerto mínima" id="input-box" name="porcentagem" type="number" min="0" max="100" required>
+                <input placeholder="URL da imagem do nível" id="input-box" name="url-nivel" type="url" required>
+                <input placeholder="Descrição do nível" id="input-box" name="descricao-nivel" type="text" minlength="30">
             </div>`
     }
 
-    container.innerHTML=`   <form class="conteudo-criacao" name="niveis-geral" onsubmit="conferirPresença(); return false">
+    container.innerHTML=`   <form class="conteudo-criacao" name="niveis-geral" onsubmit="conferirPresença(); criarTelaFinal(); return false">
                             <label class="instrucao">Agora, decida os níveis</label>
                             ${niveis}
                             <button type="submit" class="botao-prosseguir">
@@ -125,12 +125,46 @@ function criarTelaNiveis(){
                             </form>`
     
 }
+function criarTelaFinal(){
+    const container = document.querySelector(".tela-final");
+    const niveis = document.querySelector(".tela-niveis");
+    container.classList.remove("hidden");
+    niveis.classList.add("hidden");
+    container.innerHTML=`<div class="conteudo-criacao">
+                            <p class="instrucao">Seu quizz está pronto!</p>
+                            <div class="quizzes-de-outros" onclick="irPraTelaQuiz()">
+                            <img src="${infoBasica.image}"/>
+                            <div class="sombra-imagem"></div>
+                            <span>${infoBasica.title}</span>
+                            </div>
+                            <div class="botao-de-prosseguir">
+                                <p class="texto-botao-prosseguir">Acessar Quizz</p>
+                            </div>
+                            <div class="botao-voltar" onclick="estadoInicial()">
+                                <button type="button" class="voltar">Voltar</button>
+                            </div>
+                        </div>`
+}
+function conferirPresença(){
+    const niveis = document.getElementsByName("porcentagem");
+    let possui = false;
+    for (let i = 0; i < niveis.length; i++){
+        if (niveis[i].value === "0"){
+            possui = true;
+        }
+    }
+    if (!possui){
+        alert("uma das opções deve ser 0%");
+    }
+    else{
+        submeterNiveis();
+    }
+}
 function submeterPerguntas(){
     let perguntas = [];
     let titulos = document.getElementsByName("titulo-pergunta");
     let cores = document.getElementsByName("cor-pergunta");
-    let i = 0;
-    for (i = 0; i < titulos.length; i++){
+    for (let i = 0; i < titulos.length; i++){
         perguntas.push({title: titulos[i].value, color: cores[i].value, answers: respostasSubmetidas(i)});
     }
     infoBasica.questions = perguntas;
@@ -154,6 +188,19 @@ function respostasSubmetidas(index_pergunta){
         retorno.push({text: resposta_incorreta3, image: url_resposta_incorreta3, isCorrectAnswer: false});
     };
     return retorno;
+}
+function submeterNiveis(){
+    let niveis = [];
+    let titulos = document.getElementsByName("titulo-nivel");
+    let imagens = document.getElementsByName("url-nivel");
+    let descricao = document.getElementsByName("descricao-nivel");
+    let porcentagens = document.getElementsByName("porcentagem");
+
+    for (let i = 0; i < titulos.length; i++){
+        niveis.push({title: titulos[i].value, image: imagens[i].value, text: descricao[i].value, minValue: Number(porcentagens[i].value)})
+    }
+    infoBasica.levels = niveis;
+
 }
 function is_hexadecimal(elemento){
     let str = elemento.value;

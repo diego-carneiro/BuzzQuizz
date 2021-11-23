@@ -33,7 +33,6 @@ function irPraTelaQuiz(id){
     quizAtualObj.then(telaQuiz);
 }
 function telaQuiz(resposta){
-    console.log(resposta);
     const quizAtual = resposta.data;
     levels = resposta.data.levels;
 
@@ -85,7 +84,6 @@ function telaQuiz(resposta){
 }
 
 function reiniciarQuizz(quizAtual){
-    console.log(quizAtual)
     const paginaDoQuizzReiniciada = document.querySelector(".pagina-de-um-quizz");
     qtdAcertos = 0;
     totalRespostas = 0;
@@ -95,15 +93,15 @@ function reiniciarQuizz(quizAtual){
     irPraTelaQuiz(quizAtual);
 }
 
-function voltarHome(voltar){
-    //document.location.reload(true);
-    let fullReset = document.getElementById('fullReset');
+// function voltarHome(voltar){
+//     //document.location.reload(true);
+//     let fullReset = document.getElementById('fullReset');
 
-    fullReset.addEventListener('click', function(e) {
-      location.reload();
-    }, false);
+//     fullReset.addEventListener('click', function(e) {
+//       location.reload();
+//     }, false);
     
-}
+// }
 function mostrarRespostasIndividuais(respostas, qtdOpcoes){
     let retorno = [];
     let retornoString = "";
@@ -124,7 +122,6 @@ function randomizador() {
 	return Math.random() - 0.5; 
 }
 function selecionarResposta(selecionada, qtdOpcoes){
-    console.log(qtdAcertos);
     const paiSelecionada = selecionada.parentNode;
     const irmasSelecionada = paiSelecionada.children;
     const avoSelecionada = paiSelecionada.parentNode;
@@ -154,7 +151,6 @@ function selecionarResposta(selecionada, qtdOpcoes){
 }
 
 function finalizacaoQuizz (porcentagem){
-    console.log(levels);
     const fimQuizz = document.querySelector(".container-fim-quizz");
     fimQuizz.classList.remove('hidden');
     const titleQuizz = fimQuizz.querySelector(".tituloFimQuizz");
