@@ -75,15 +75,9 @@ function telaQuiz(resposta){
 
     for (let i = 0; i < quizAtual.questions.length; i++) {
         caixaRespostas +=
-<<<<<<< HEAD
         `<div class="container-pergunta-individual">
             <div class="container-titulo-pergunta-individual" style="background-color: ${quizAtual.questions[i].color};">
                 <h2 style=" color: ${quizAtual.questions[i].color >= '#7FFFFF' ? 'black': 'white'}">${quizAtual.questions[i].title}</h2>
-=======
-            `<div class="container-pergunta-individual">
-            <div class="container-titulo-pegunta-individual">
-                <h2>${quizAtual.questions[i].title}</h2>
->>>>>>> 05de14202aa1559ea4c1819c562906fd7ace9b74
             </div>
             <div class="container-respostas-pergunta-individual">
                 ${mostrarRespostasIndividuais(quizAtual.questions[i].answers, quizAtual.questions.length)}
