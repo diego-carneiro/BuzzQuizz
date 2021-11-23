@@ -13,10 +13,7 @@ function criarTelaInicial(){
     </div>`
     }
     else {
-    caixaBotao.innerHTML = 
-    // `<div class="botao-criacao">
-    // <button class="criar possuiQuiz" onclick="trocarPagina()"><ion-icon name="add-circle"></ion-icon></button>
-    // </div>`
+    caixaBotao.innerHTML = ""
     }
 }
 function trocarPagina(){
