@@ -65,7 +65,7 @@ function irPraTelaQuiz(id) {
     quizAtualObj.then(telaQuiz);
     quizAtualObj.catch(erroAxios);
 }
-function telaQuiz(resposta) {
+function telaQuiz(resposta){
     const quizAtual = resposta.data;
     levels = resposta.data.levels;
 
@@ -189,17 +189,33 @@ function selecionarResposta(selecionada, qtdOpcoes) {
     setTimeout(mostrarProximaQuestao, 2000, avoSelecionada);
 }
 
-function finalizacaoQuizz(porcentagem) {
+function finalizacaoQuizz (porcentagem){
+    
     const fimQuizz = document.querySelector(".container-fim-quizz");
     fimQuizz.classList.remove('hidden');
+    
+    const ultimoLevel = levels.length - 1;
+    let level;
+    for(let i=ultimoLevel; i>=0; i--){
+        console.log(levels[i]);
+        if(porcentagem >= levels[i].minValue){
+          level = levels[i]; 
+          console.log(levels[i]);
+
+          break;
+        }    
+    }
+
     const titleQuizz = fimQuizz.querySelector(".tituloFimQuizz");
-    titleQuizz.innerHTML = `${porcentagem}% de acerto: `;
-    const imgFimQuizz = fimQuizz.querySelector("img");
-    imgFimQuizz.setAttribute("src", levels[0].image);
-    //const textoDoQuizz = fimQuizz.querySelector(".textoQuizz");
-    //textoDoQuizz.innerHTML = `${quizAtual.levels[0].text}`;
+    titleQuizz.innerHTML = `${porcentagem}% de acerto: ${level.title}`;
 
+    const imgFimQuizz = fimQuizz.querySelector("img"); 
+    imgFimQuizz.setAttribute("src",level.image);
 
+    const textoDoQuizz = fimQuizz.querySelector(".textoQuizz");
+    textoDoQuizz.innerHTML = `${level.text}`;
+   
+   
 }
 function mostrarProximaQuestao(caixaAtual) {
     const perguntas = document.querySelectorAll(".container-pergunta-individual");
