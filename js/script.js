@@ -33,7 +33,7 @@ function imprimirMeusQuizes(response) {
     const caixaQuizes = document.querySelector(".criar-quizz");
     
     caixaQuizes.innerHTML +=
-        `<div class="quizzes-de-outros" onclick="irPraTelaQuiz(${meuQuizz.id})">
+        `<div class="quizzes-de-outros" onclick="irPraTelaQuiz(${meuQuizz.id}) data-identifier="quizz-card"">
             <img src="${meuQuizz.image}"/>
             <div class="sombra-imagem"></div>
             <span>${meuQuizz.title}</span>
@@ -50,7 +50,7 @@ function imprimirQuizes(resposta) {
     const caixaQuizes = document.querySelector(".caixa-quizz");
     listaQuizes.map(quiz =>
         caixaQuizes.innerHTML +=
-        `<div class="quizzes-de-outros" onclick="irPraTelaQuiz(${quiz.id})">
+        `<div class="quizzes-de-outros" onclick="irPraTelaQuiz(${quiz.id}) data-identifier="quizz-card"">
             <img src="${quiz.image}"/>
             <div class="sombra-imagem"></div>
             <span>${quiz.title}</span>
@@ -75,7 +75,7 @@ function telaQuiz(resposta) {
 
     for (let i = 0; i < quizAtual.questions.length; i++) {
         caixaRespostas +=
-        `<div class="container-pergunta-individual">
+        `<div class="container-pergunta-individual" data-identifier="question">
             <div class="container-titulo-pergunta-individual" style="background-color: ${quizAtual.questions[i].color};">
                 <h2 style=" color: ${quizAtual.questions[i].color >= '#7FFFFF' ? 'black': 'white'}">${quizAtual.questions[i].title}</h2>
             </div>
@@ -95,8 +95,8 @@ function telaQuiz(resposta) {
                 ${caixaRespostas}
 
                 <div class="container-fim-quizz hidden">
-                    <div class="container-resultado">
-                        <h1 class="tituloFimQuizz">${porcentagemDeAcertos}% de acerto: ${quizAtual.levels[0].title}</h1>
+                    <div class="container-resultado" data-identifier="quizz-result">
+                        <h1 class="tituloFimQuizz" >${porcentagemDeAcertos}% de acerto: ${quizAtual.levels[0].title}</h1>
                     </div>
                     <div class="imagem-e-descricao">
                         <img src=${quizAtual.levels[0].image}"/>
@@ -140,7 +140,7 @@ function mostrarRespostasIndividuais(respostas, qtdOpcoes) {
     let retornoString = "";
     for (let i = 0; i < respostas.length; i++) {
         retorno.push(
-            `<div class="container-resposta-indivual ${(respostas[i].isCorrectAnswer === true) ? "resposta-correta" : "resposta-errada"}" onclick="selecionarResposta(this, ${qtdOpcoes})">
+            `<div class="container-resposta-indivual ${(respostas[i].isCorrectAnswer === true) ? "resposta-correta" : "resposta-errada"}" onclick="selecionarResposta(this, ${qtdOpcoes}) " data-identifier="answer">
             <img src="${respostas[i].image}"/>
             <span>${respostas[i].text}</span>
         </div>`);
