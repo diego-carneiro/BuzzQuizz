@@ -184,10 +184,10 @@ function respostasSubmetidas(index_pergunta){
     const url_resposta_incorreta3 = document.getElementsByName(`Imagem Resposta Incorreta 3 ${index_pergunta + 1}`)[0].value;
     retorno = [{text: resposta_correta, image: url_resposta_correta, isCorrectAnswer: true},
                {text: resposta_incorreta1, image: url_resposta_incorreta1, isCorrectAnswer: false}];
-    if (resposta_incorreta2 !== "" || isUrl(url_resposta_incorreta2) === false){
+    if (resposta_incorreta2 !== "" && (isUrl(url_resposta_incorreta2))){
         retorno.push({text: resposta_incorreta2, image: url_resposta_incorreta2, isCorrectAnswer: false});
     }
-    if (resposta_incorreta3 !== ""  || isUrl(url_resposta_incorreta2) === false){
+    if (resposta_incorreta3 !== ""  && (isUrl(url_resposta_incorreta2))){
         retorno.push({text: resposta_incorreta3, image: url_resposta_incorreta3, isCorrectAnswer: false});
     };
     return retorno;
