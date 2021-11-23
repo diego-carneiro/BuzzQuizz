@@ -65,7 +65,7 @@ function irPraTelaQuiz(id) {
     quizAtualObj.then(telaQuiz);
     quizAtualObj.catch(erroAxios);
 }
-function telaQuiz(resposta){
+function telaQuiz(resposta) {
     const quizAtual = resposta.data;
     levels = resposta.data.levels;
 
@@ -75,15 +75,9 @@ function telaQuiz(resposta){
 
     for (let i = 0; i < quizAtual.questions.length; i++) {
         caixaRespostas +=
-<<<<<<< HEAD
         `<div class="container-pergunta-individual">
             <div class="container-titulo-pergunta-individual" style="background-color: ${quizAtual.questions[i].color};">
                 <h2 style=" color: ${quizAtual.questions[i].color >= '#7FFFFF' ? 'black': 'white'}">${quizAtual.questions[i].title}</h2>
-=======
-            `<div class="container-pergunta-individual">
-            <div class="container-titulo-pegunta-individual">
-                <h2>${quizAtual.questions[i].title}</h2>
->>>>>>> 05de14202aa1559ea4c1819c562906fd7ace9b74
             </div>
             <div class="container-respostas-pergunta-individual">
                 ${mostrarRespostasIndividuais(quizAtual.questions[i].answers, quizAtual.questions.length)}
@@ -189,33 +183,17 @@ function selecionarResposta(selecionada, qtdOpcoes) {
     setTimeout(mostrarProximaQuestao, 2000, avoSelecionada);
 }
 
-function finalizacaoQuizz (porcentagem){
-    
+function finalizacaoQuizz(porcentagem) {
     const fimQuizz = document.querySelector(".container-fim-quizz");
     fimQuizz.classList.remove('hidden');
-    
-    const ultimoLevel = levels.length - 1;
-    let level;
-    for(let i=ultimoLevel; i>=0; i--){
-        console.log(levels[i]);
-        if(porcentagem >= levels[i].minValue){
-          level = levels[i]; 
-          console.log(levels[i]);
-
-          break;
-        }    
-    }
-
     const titleQuizz = fimQuizz.querySelector(".tituloFimQuizz");
-    titleQuizz.innerHTML = `${porcentagem}% de acerto: ${level.title}`;
+    titleQuizz.innerHTML = `${porcentagem}% de acerto: `;
+    const imgFimQuizz = fimQuizz.querySelector("img");
+    imgFimQuizz.setAttribute("src", levels[0].image);
+    //const textoDoQuizz = fimQuizz.querySelector(".textoQuizz");
+    //textoDoQuizz.innerHTML = `${quizAtual.levels[0].text}`;
 
-    const imgFimQuizz = fimQuizz.querySelector("img"); 
-    imgFimQuizz.setAttribute("src",level.image);
 
-    const textoDoQuizz = fimQuizz.querySelector(".textoQuizz");
-    textoDoQuizz.innerHTML = `${level.text}`;
-   
-   
 }
 function mostrarProximaQuestao(caixaAtual) {
     const perguntas = document.querySelectorAll(".container-pergunta-individual");
