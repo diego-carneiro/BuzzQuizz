@@ -33,7 +33,7 @@ function imprimirMeusQuizes(response) {
     const caixaQuizes = document.querySelector(".criar-quizz");
     
     caixaQuizes.innerHTML +=
-        `<div class="quizzes-de-outros" onclick="irPraTelaQuiz(${meuQuizz.id})" data-identifier="quizz-card">
+        `<div class="quizzes-de-outros" onclick='irPraTelaQuiz(${meuQuizz.id})' data-identifier="quizz-card">
             <img src="${meuQuizz.image}"/>
             <div class="sombra-imagem"></div>
             <span>${meuQuizz.title}</span>
@@ -50,7 +50,7 @@ function imprimirQuizes(resposta) {
     const caixaQuizes = document.querySelector(".caixa-quizz");
     listaQuizes.map(quiz =>
         caixaQuizes.innerHTML +=
-        `<div class="quizzes-de-outros" onclick="irPraTelaQuiz(${quiz.id})" data-identifier="quizz-card">
+        `<div class="quizzes-de-outros" onclick='irPraTelaQuiz(${quiz.id})' data-identifier="quizz-card">
             <img src="${quiz.image}"/>
             <div class="sombra-imagem"></div>
             <span>${quiz.title}</span>
