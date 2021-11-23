@@ -114,7 +114,7 @@ function criarTelaNiveis(){
     }
 
     container.innerHTML=`   <form class="conteudo-criacao" name="niveis-geral" onsubmit="conferirPresença(); criarTelaFinal(); return false">
-                            <label class="instrucao">Agora, decida os níveis</label>
+                            <label class="instrucao">Prosseguir para Tela Final</label>
                             ${niveis}
                             <button type="submit" class="botao-prosseguir">
                             Prosseguir para criar níveis
@@ -168,8 +168,6 @@ function submeterPerguntas(){
         perguntas.push({title: titulos[i].value, color: cores[i].value, answers: respostasSubmetidas(i)});
     }
     infoBasica.questions = perguntas;
-    const requisition = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", infoBasica);
-    requisition.then(() => console.log("enviado"))
 }
 function respostasSubmetidas(index_pergunta){
     let retorno = []
@@ -202,7 +200,8 @@ function submeterNiveis(){
         niveis.push({title: titulos[i].value, image: imagens[i].value, text: descricao[i].value, minValue: Number(porcentagens[i].value)})
     }
     infoBasica.levels = niveis;
-
+    const requisition = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", infoBasica);
+    requisition.then(() => console.log("enviado"));
 }
 function is_hexadecimal(elemento){
     let str = elemento.value;
