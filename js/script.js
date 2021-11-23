@@ -17,7 +17,6 @@ function disporMeusQuizes() {
 
     const caixaQuizes = document.querySelector(".criar-quizz");
     caixaQuizes.innerHTML = "";
-    console.log(caixaQuizes)
 
     for (let i = 0; i < IDs.length; i++) {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${IDs[i]}`);
@@ -191,10 +190,8 @@ function finalizacaoQuizz (porcentagem){
     const ultimoLevel = levels.length - 1;
     let level;
     for(let i=ultimoLevel; i>=0; i--){
-        console.log(levels[i]);
         if(porcentagem >= levels[i].minValue){
           level = levels[i]; 
-          console.log(levels[i]);
 
           break;
         }    
