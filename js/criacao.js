@@ -61,7 +61,7 @@ function criarTelaPerguntas(){
     let perguntas = "";
     for (let i = 0; i < infoBasica.questions.length; i++){
         perguntas +=
-            `<button type="button" class="dados-quizz_2 colapsavel" onclick="colapsarPergunta(this)"data-identifier="expand">
+            `<button type="button" class="dados-quizz_2 colapsavel" onclick="colapsarPergunta(this)" data-identifier="expand">
             Pergunta ${i+1}
             <ion-icon name="create-outline" class="pencil"></ion-icon>
             </button>

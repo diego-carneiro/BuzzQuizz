@@ -50,7 +50,7 @@ function imprimirQuizes(resposta) {
     const caixaQuizes = document.querySelector(".caixa-quizz");
     listaQuizes.map(quiz =>
         caixaQuizes.innerHTML +=
-        `<div class="quizzes-de-outros" onclick="irPraTelaQuiz(${quiz.id}) data-identifier="quizz-card"">
+        `<div class="quizzes-de-outros" onclick="irPraTelaQuiz(${quiz.id}) data-identifier="quizz-card">
             <img src="${quiz.image}"/>
             <div class="sombra-imagem"></div>
             <span>${quiz.title}</span>
@@ -140,7 +140,7 @@ function mostrarRespostasIndividuais(respostas, qtdOpcoes) {
     let retornoString = "";
     for (let i = 0; i < respostas.length; i++) {
         retorno.push(
-            `<div class="container-resposta-indivual ${(respostas[i].isCorrectAnswer === true) ? "resposta-correta" : "resposta-errada"}" onclick="selecionarResposta(this, ${qtdOpcoes}) " data-identifier="answer">
+            `<div class="container-resposta-indivual ${(respostas[i].isCorrectAnswer === true) ? "resposta-correta" : "resposta-errada"}" onclick="selecionarResposta(this, ${qtdOpcoes})" data-identifier="answer">
             <img src="${respostas[i].image}"/>
             <span>${respostas[i].text}</span>
         </div>`);
