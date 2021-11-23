@@ -5,6 +5,8 @@ let perguntasQuizCriado;
 const caixaErro = "Por favor, preencha os dados corretamente";
 function criarTelaInicial(){
     const caixaBotao = document.querySelector(".criar-quizz");
+    const paginaInicial = document.querySelector(".corpo-pagina-inicial");
+    const tempPagina = paginaInicial.innerHTML;
     if (!quizUsuario) {
     caixaBotao.innerHTML = 
     `<div class="botao-criacao">
@@ -13,10 +15,13 @@ function criarTelaInicial(){
     </div>`
     }
     else {
-    caixaBotao.innerHTML = 
+    paginaInicial.innerHTML = "";
+    paginaInicial.innerHTML += 
     `<div class="botao-criacao">
+    <span>Seus Quizzes</span>
     <button class="criar possuiQuiz" onclick="trocarPagina()"><ion-icon name="add-circle"></ion-icon></button>
     </div>`
+    paginaInicial.innerHTML += tempPagina;
     }
 }
 function trocarPagina(){
@@ -62,8 +67,8 @@ function criarTelaPerguntas(){
             </button>
                 <div class="conteudo-pergunta" name="container-inputs">
                     <div class="input-box">
-                        <input placeholder="Texto da Pergunta" name="titulo-pergunta" id="input-box" minlength="20" required oninvalid="verificarEntrada(this)">
-                        <input placeholder="Cor de fundo da pergunta" name="cor-pergunta" id="input-box" onchange="is_hexadecimal(this)" minlength="7" maxlength="7" value="#" required oninvalid="verificarEntrada(this)">
+                        <input placeholder="Texto da Pergunta" name="Título da Pergunta" id="input-box" minlength="20" required oninvalid="verificarEntrada(this)">
+                        <input placeholder="Cor de fundo da pergunta" name="Cor da Pergunta" id="input-box" onchange="is_hexadecimal(this)" minlength="7" maxlength="7" value="#" required oninvalid="verificarEntrada(this)">
                     </div>
                     <label class="input-title">Resposta correta</label>
                     <div class="input-box">
@@ -165,8 +170,8 @@ function conferirPresença(){
 }
 function submeterPerguntas(){
     let perguntas = [];
-    let titulos = document.getElementsByName("titulo-pergunta");
-    let cores = document.getElementsByName("cor-pergunta");
+    let titulos = document.getElementsByName("Título da Pergunta");
+    let cores = document.getElementsByName("Cor da Pergunta");
     for (let i = 0; i < perguntasQuizCriado; i++){
         perguntas.push({title: titulos[i].value, color: cores[i].value, answers: respostasSubmetidas(i)});
     }
@@ -208,9 +213,7 @@ function submeterNiveis(){
         console.log(response, infoBasica)
         salvarID(response.data);
     });
-    requisition.catch((response) =>{
-        console.log(infoBasica, response.response)
-    });
+    requisition.catch(erroAxios);
 
 }
 function salvarID(quizzInfo) {
@@ -268,6 +271,13 @@ function voltarTela(alvo, atual){
     const destino = document.querySelector(alvo);
     const presente = document.querySelector(atual);
     const topo = document.querySelector(".barra-topo");
+    const quizAtivo = document.querySelector(".pagina-de-um-quizz");
+    if(alvo = ".corpo-pagina-inicial"){
+        infoBasica = {title: "", image: "", questions: [], levels: []};
+    }
+    if(quizAtivo !== null){
+        quizAtivo.remove();
+    }
     destino.classList.remove("hidden");
     presente.classList.add("hidden");
     topo.scrollIntoView({block: "center"});
@@ -275,4 +285,8 @@ function voltarTela(alvo, atual){
 function isUrl(s) {
     var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
     return regexp.test(s);
+ }
+ function erroAxios(){
+     alert("Houve uma falha na comunicação com o servidor, tente novamente mais tarde");
+     window.location.reload();
  }

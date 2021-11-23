@@ -36,14 +36,29 @@
     border-radius: 5px;
     border: 1px dashed #D5D5D5;
     margin-bottom: 110px;
-    margin-top: 80px;
 }
-.botao-criacao{
+ .corpo-pagina-inicial > .botao-criacao{
     display: flex;
     flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-self: flex-center;
+    width: 1051px;
+    margin-top: 50px;
+
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 23px;
+    letter-spacing: 0em;
+    text-align: center;
+}
+.criar-quizz > .botao-criacao{
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    width: 250px;
-    height: 107px;
+    align-items: center;
 }
 .aviso-quizz{
     font-size: 20px;
@@ -62,10 +77,13 @@
 }
 .possuiQuiz{
     width: 40px;
-    border-radius: 50;
+    border-radius: 50%;
     border: none;
     background-color: transparent;
     font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 /*::::::::::Todos os Quizzes::::::::::*/
 .caixa-quizz{
@@ -313,6 +331,14 @@
     font-weight: 550;
     font-size: 23px;
     
+
+    font-family: Roboto;
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 27px;
+    letter-spacing: 0em;
+    text-align: center;
 }
 
 .container-respostas-pergunta-individual {
@@ -374,6 +400,7 @@
     width: 681px;
     height: 273px;
     display: flex;
+    
 }
 
 .imagem-e-descricao img {
@@ -381,8 +408,10 @@
     height: 273px;
 }
 
-.imagem-e-descricao p{
+.imagem-e-descricao .textoQuizz{
+    width: auto;
     padding: 21px;
+    word-break: normal;
 }
 
 .reiniciar-quizz {
@@ -463,7 +492,6 @@ input[type=number] {
 .criar-quizz{
     width: 90vw;
     margin-bottom: 30px;
-    margin-top: 30px;
 }
 .caixa-quizz{
     width: 90vw;
@@ -476,8 +504,24 @@ input[type=number] {
     margin: 0 auto;
     margin-bottom: 14px;
 }
+.pagina-de-um-quizz{
+    display: flex;
+    flex-direction: column;
+}
 
-
+.container-pergunta-individual{
+    width: 90vw;
+    height: auto;
+    padding: 0;
+    align-items: center;
+    margin: 0 auto;
+    display: flex;
+}
+.container-respostas-pergunta-individual{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .conteudo-criacao{
     width: 90vw;
     align-items: center;
@@ -506,6 +550,14 @@ input[type=number] {
 .caixa-adicao{
     width: 90%;
 }
-
+.corpo-pagina-inicial > .botao-criacao{
+    width: 100%;
+    justify-self: center;
+    justify-content: space-between;
+    padding: 0 25px;
+}
+.hidden{
+    display: none;
+}
 
 }

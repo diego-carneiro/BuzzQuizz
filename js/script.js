@@ -11,7 +11,7 @@ function pageSwitch() {
 function disporQuizes(){
     const promise = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
     promise.then(imprimirQuizes);
-    promise.catch();
+    promise.catch(erroAxios);
 }
 function imprimirQuizes(resposta){
     const listaQuizes = resposta.data;
@@ -31,6 +31,7 @@ function irPraTelaQuiz(id){
     const quizAtualObj = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${id}`);
     primeiraTela.classList.add("hidden");
     quizAtualObj.then(telaQuiz);
+    quizAtualObj.catch(erroAxios);
 }
 function telaQuiz(resposta){
     const quizAtual = resposta.data;
@@ -43,8 +44,8 @@ function telaQuiz(resposta){
     for (let i = 0; i < quizAtual.questions.length; i++){
         caixaRespostas +=
         `<div class="container-pergunta-individual">
-            <div class="container-titulo-pegunta-individual">
-                <h2>${quizAtual.questions[i].title}</h2>
+            <div class="container-titulo-pergunta-individual" style="background-color: ${quizAtual.questions[i].color};">
+                <h2 style=" color: ${quizAtual.questions[i].color >= '#7FFFFF' ? 'black': 'white'}">${quizAtual.questions[i].title}</h2>
             </div>
             <div class="container-respostas-pergunta-individual">
                 ${mostrarRespostasIndividuais(quizAtual.questions[i].answers, quizAtual.questions.length)}
