@@ -1,4 +1,4 @@
-let quizUsuario = false;
+let quizUsuario = !!localStorage.getItem("IDs");
 let infoBasica = {title: "", image: "", questions: [], levels: []};
 let verificacaoChamada = 0;
 let perguntasQuizCriado;
@@ -14,9 +14,9 @@ function criarTelaInicial(){
     }
     else {
     caixaBotao.innerHTML = 
-    `<div class="botao-criacao">
-    <button class="criar possuiQuiz" onclick="trocarPagina()"><ion-icon name="add-circle"></ion-icon></button>
-    </div>`
+    // `<div class="botao-criacao">
+    // <button class="criar possuiQuiz" onclick="trocarPagina()"><ion-icon name="add-circle"></ion-icon></button>
+    // </div>`
     }
 }
 function trocarPagina(){
