@@ -1,6 +1,7 @@
 let quizUsuario = false;
 let infoBasica = {title: "", image: "", questions: [], levels: []};
 let verificacaoChamada = 0;
+let perguntasQuizCriado;
 const caixaErro = "Por favor, preencha os dados corretamente";
 function criarTelaInicial(){
     const caixaBotao = document.querySelector(".criar-quizz");
@@ -27,7 +28,7 @@ function trocarPagina(){
 function verificarCriacao_1(){
     const tituloQuizCriado = document.querySelector(".criacao-titulo").value;
     const imagemQuizCriado = document.querySelector(".criacao-img").value;
-    const perguntasQuizCriado = document.querySelector(".criacao-quantidade-perguntas").value;
+    perguntasQuizCriado = document.querySelector(".criacao-quantidade-perguntas").value;
     const niveisQuizCriado = document.querySelector(".criacao-quantidade-niveis").value;
     
     let arrayPerguntas = [];
@@ -61,7 +62,7 @@ function criarTelaPerguntas(){
             </button>
                 <div class="conteudo-pergunta" name="container-inputs">
                     <div class="input-box">
-                        <input placeholder="Texto da Pergunta" name="Titulo da Pergunta ${i+1}" id="input-box" minlength="20" required oninvalid="verificarEntrada(this)">
+                        <input placeholder="Texto da Pergunta" name="titulo-pergunta" id="input-box" minlength="20" required oninvalid="verificarEntrada(this)">
                         <input placeholder="Cor de fundo da pergunta" name="cor-pergunta" id="input-box" onchange="is_hexadecimal(this)" minlength="7" maxlength="7" value="#" required oninvalid="verificarEntrada(this)">
                     </div>
                     <label class="input-title">Resposta correta</label>
@@ -166,7 +167,7 @@ function submeterPerguntas(){
     let perguntas = [];
     let titulos = document.getElementsByName("titulo-pergunta");
     let cores = document.getElementsByName("cor-pergunta");
-    for (let i = 0; i < titulos.length; i++){
+    for (let i = 0; i < perguntasQuizCriado; i++){
         perguntas.push({title: titulos[i].value, color: cores[i].value, answers: respostasSubmetidas(i)});
     }
     infoBasica.questions = perguntas;
@@ -200,11 +201,33 @@ function submeterNiveis(){
 
     for (let i = 0; i < titulos.length; i++){
         niveis.push({title: titulos[i].value, image: imagens[i].value, text: descricao[i].value, minValue: Number(porcentagens[i].value)})
-    }
+    } 
     infoBasica.levels = niveis;
     const requisition = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", infoBasica);
-    requisition.then();
+    requisition.then((response) => {
+        console.log(response, infoBasica)
+        salvarID(response.data);
+    });
+    requisition.catch((response) =>{
+        console.log(infoBasica, response.response)
+    });
+
 }
+function salvarID(quizzInfo) {
+    quizzInfo.id
+
+    if(localStorage.getItem("IDs")){
+        localStorage.getItem("IDs")
+        const IDs = JSON.parse(localStorage.getItem("IDs"));
+        IDs.push(quizzInfo.id);
+        localStorage.setItem("IDs", JSON.stringify(IDs))
+
+    }else{
+        localStorage.setItem("IDs", JSON.stringify([quizzInfo.id]))  
+    }
+    console.log(localStorage)
+}
+
 function is_hexadecimal(elemento){
     let str = elemento.value;
     regexp = /^[0-9a-fA-F#]+$/;
