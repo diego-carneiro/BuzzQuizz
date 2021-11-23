@@ -4,36 +4,68 @@ let porcentagemDeAcertos = 0;
 let levels;
 
 function pageSwitch() {
-    
     const page = document.querySelector(".hidden")
     page.classList.remove("hidden")
 }
-function disporQuizes(){
+function disporMeusQuizes() {
+
+    if(!localStorage.getItem("IDs")){
+        return;
+    }    
+
+    const IDs = JSON.parse(localStorage.getItem("IDs"));
+
+    const caixaQuizes = document.querySelector(".criar-quizz");
+    caixaQuizes.innerHTML = "";
+    console.log(caixaQuizes)
+
+    for (let i = 0; i < IDs.length; i++) {
+        const promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${IDs[i]}`);
+        promise.then(imprimirMeusQuizes);
+        promise.catch();
+    }
+    
+}
+disporMeusQuizes();
+
+function imprimirMeusQuizes(response) {
+    const meuQuizz = response.data;
+    const caixaQuizes = document.querySelector(".criar-quizz");
+    
+    caixaQuizes.innerHTML +=
+        `<div class="quizzes-de-outros" onclick="irPraTelaQuiz(${meuQuizz.id})">
+            <img src="${meuQuizz.image}"/>
+            <div class="sombra-imagem"></div>
+            <span>${meuQuizz.title}</span>
+        </div>`
+
+}
+function disporQuizes() {
     const promise = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
     promise.then(imprimirQuizes);
     promise.catch(erroAxios);
 }
-function imprimirQuizes(resposta){
+function imprimirQuizes(resposta) {
     const listaQuizes = resposta.data;
     const caixaQuizes = document.querySelector(".caixa-quizz");
     listaQuizes.map(quiz =>
-        caixaQuizes.innerHTML += 
+        caixaQuizes.innerHTML +=
         `<div class="quizzes-de-outros" onclick="irPraTelaQuiz(${quiz.id})">
             <img src="${quiz.image}"/>
             <div class="sombra-imagem"></div>
             <span>${quiz.title}</span>
         </div>`
-        );
+    );
 }
-function irPraTelaQuiz(id){
+function irPraTelaQuiz(id) {
     const primeiraTela = document.querySelector(".corpo-pagina-inicial");
-    
+
     const quizAtualObj = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${id}`);
     primeiraTela.classList.add("hidden");
     quizAtualObj.then(telaQuiz);
     quizAtualObj.catch(erroAxios);
 }
-function telaQuiz(resposta){
+function telaQuiz(resposta) {
     const quizAtual = resposta.data;
     levels = resposta.data.levels;
 
@@ -41,11 +73,17 @@ function telaQuiz(resposta){
 
     let caixaRespostas = "";
 
-    for (let i = 0; i < quizAtual.questions.length; i++){
+    for (let i = 0; i < quizAtual.questions.length; i++) {
         caixaRespostas +=
+<<<<<<< HEAD
         `<div class="container-pergunta-individual">
             <div class="container-titulo-pergunta-individual" style="background-color: ${quizAtual.questions[i].color};">
                 <h2 style=" color: ${quizAtual.questions[i].color >= '#7FFFFF' ? 'black': 'white'}">${quizAtual.questions[i].title}</h2>
+=======
+            `<div class="container-pergunta-individual">
+            <div class="container-titulo-pegunta-individual">
+                <h2>${quizAtual.questions[i].title}</h2>
+>>>>>>> 05de14202aa1559ea4c1819c562906fd7ace9b74
             </div>
             <div class="container-respostas-pergunta-individual">
                 ${mostrarRespostasIndividuais(quizAtual.questions[i].answers, quizAtual.questions.length)}
@@ -53,7 +91,7 @@ function telaQuiz(resposta){
         </div>`
     }
 
-    corpo.innerHTML += 
+    corpo.innerHTML +=
         `
             <div class="pagina-de-um-quizz">
                 <div class="container-foto-de-capa-quizz">
@@ -81,10 +119,10 @@ function telaQuiz(resposta){
             
             </div> 
         `
-    
+
 }
 
-function reiniciarQuizz(quizAtual){
+function reiniciarQuizz(quizAtual) {
     const paginaDoQuizzReiniciada = document.querySelector(".pagina-de-um-quizz");
     qtdAcertos = 0;
     totalRespostas = 0;
@@ -101,86 +139,86 @@ function reiniciarQuizz(quizAtual){
 //     fullReset.addEventListener('click', function(e) {
 //       location.reload();
 //     }, false);
-    
+
 // }
-function mostrarRespostasIndividuais(respostas, qtdOpcoes){
+function mostrarRespostasIndividuais(respostas, qtdOpcoes) {
     let retorno = [];
     let retornoString = "";
-    for (let i = 0; i < respostas.length; i++){
+    for (let i = 0; i < respostas.length; i++) {
         retorno.push(
-        `<div class="container-resposta-indivual ${(respostas[i].isCorrectAnswer === true) ? "resposta-correta" : "resposta-errada"}" onclick="selecionarResposta(this, ${qtdOpcoes})">
+            `<div class="container-resposta-indivual ${(respostas[i].isCorrectAnswer === true) ? "resposta-correta" : "resposta-errada"}" onclick="selecionarResposta(this, ${qtdOpcoes})">
             <img src="${respostas[i].image}"/>
             <span>${respostas[i].text}</span>
         </div>`);
     }
     retorno.sort(randomizador);
-    for (let j = 0; j < retorno.length; j++){
+    for (let j = 0; j < retorno.length; j++) {
         retornoString += retorno[j];
     }
     return retornoString;
 }
-function randomizador() { 
-	return Math.random() - 0.5; 
+function randomizador() {
+    return Math.random() - 0.5;
 }
-function selecionarResposta(selecionada, qtdOpcoes){
+function selecionarResposta(selecionada, qtdOpcoes) {
     const paiSelecionada = selecionada.parentNode;
     const irmasSelecionada = paiSelecionada.children;
     const avoSelecionada = paiSelecionada.parentNode;
-    
+
     const irmasErradas = paiSelecionada.querySelectorAll(".resposta-errada");
     const irmaCerta = paiSelecionada.querySelector(".resposta-correta");
-    for (let i = 0; i < irmasSelecionada.length; i++){
+    for (let i = 0; i < irmasSelecionada.length; i++) {
         irmasSelecionada[i].classList.add("nao-selecionado");
         irmasSelecionada[i].removeAttribute("onclick");
     }
-    for (let i = 0; i < irmasErradas.length; i++){
+    for (let i = 0; i < irmasErradas.length; i++) {
         irmasErradas[i].classList.add("vermelho");
     }
-    if(selecionada.classList.contains("resposta-correta")){
+    if (selecionada.classList.contains("resposta-correta")) {
         qtdAcertos++;
     }
     irmaCerta.classList.add("verde");
     selecionada.classList.remove("nao-selecionado");
     totalRespostas++;
 
-    if(totalRespostas === qtdOpcoes){
-      const porcentagem = Math.round((qtdAcertos/qtdOpcoes)*100);
-      finalizacaoQuizz(porcentagem);
+    if (totalRespostas === qtdOpcoes) {
+        const porcentagem = Math.round((qtdAcertos / qtdOpcoes) * 100);
+        finalizacaoQuizz(porcentagem);
     }
 
     setTimeout(mostrarProximaQuestao, 2000, avoSelecionada);
 }
 
-function finalizacaoQuizz (porcentagem){
+function finalizacaoQuizz(porcentagem) {
     const fimQuizz = document.querySelector(".container-fim-quizz");
     fimQuizz.classList.remove('hidden');
     const titleQuizz = fimQuizz.querySelector(".tituloFimQuizz");
     titleQuizz.innerHTML = `${porcentagem}% de acerto: `;
     const imgFimQuizz = fimQuizz.querySelector("img");
-    imgFimQuizz.setAttribute("src",levels[0].image);
+    imgFimQuizz.setAttribute("src", levels[0].image);
     //const textoDoQuizz = fimQuizz.querySelector(".textoQuizz");
     //textoDoQuizz.innerHTML = `${quizAtual.levels[0].text}`;
-   
-   
+
+
 }
-function mostrarProximaQuestao(caixaAtual){
+function mostrarProximaQuestao(caixaAtual) {
     const perguntas = document.querySelectorAll(".container-pergunta-individual");
     let posicao = 0;
     let scrollou = false;
     //Pedaço de código extra, utilizado para ver se o usuário já scrollou e assim desativar o scroll 
-    window.addEventListener('scroll', (e) => {  
+    window.addEventListener('scroll', (e) => {
         scrollou = true;
     })
 
-    for (let i = 0; i < perguntas.length; i++){
-        if(perguntas[i] === caixaAtual){
+    for (let i = 0; i < perguntas.length; i++) {
+        if (perguntas[i] === caixaAtual) {
             posicao = i;
         }
     }
-    if ((posicao + 1) < perguntas.length && !scrollou){
-        perguntas[posicao+1].scrollIntoView({behavior: "smooth", block: "center"});
+    if ((posicao + 1) < perguntas.length && !scrollou) {
+        perguntas[posicao + 1].scrollIntoView({ behavior: "smooth", block: "center" });
     }
-    else if (!scrollou){
-        document.querySelector(".container-fim-quizz").scrollIntoView({behavior: "smooth", block: "center"});
+    else if (!scrollou) {
+        document.querySelector(".container-fim-quizz").scrollIntoView({ behavior: "smooth", block: "center" });
     }
 }
