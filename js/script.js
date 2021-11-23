@@ -73,7 +73,7 @@ function telaQuiz(resposta){
                     <button class="reiniciar-quizz" onclick="reiniciarQuizz(${quizAtual.id})">
                         Reiniciar Quizz
                     </button>
-                    <button  id='fullReset' class="voltar-home" onclick="voltarHome(this)">
+                    <button  id='fullReset' class="voltar-home" onclick="voltarTela('.corpo-pagina-inicial', '.pagina-de-um-quizz')">
                         Voltar para home
                     </button>
                 </div>

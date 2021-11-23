@@ -1,5 +1,7 @@
 let quizUsuario = false;
 let infoBasica = {title: "", image: "", questions: [], levels: []};
+let verificacaoChamada = 0;
+const caixaErro = "Por favor, preencha os dados corretamente";
 function criarTelaInicial(){
     const caixaBotao = document.querySelector(".criar-quizz");
     if (!quizUsuario) {
@@ -57,28 +59,28 @@ function criarTelaPerguntas(){
             Pergunta ${i+1}
             <ion-icon name="create-outline" class="pencil"></ion-icon>
             </button>
-                <div class="conteudo-pergunta">
+                <div class="conteudo-pergunta" name="container-inputs">
                     <div class="input-box">
-                        <input placeholder="Texto da Pergunta" name="titulo-pergunta" id="input-box" minlength="20" required>
-                        <input placeholder="Cor de fundo da pergunta" name="cor-pergunta" id="input-box" onchange="is_hexadecimal(this)" minlength="7" maxlength="7" value="#" required>
+                        <input placeholder="Texto da Pergunta" name="Titulo da Pergunta ${i+1}" id="input-box" minlength="20" required oninvalid="verificarEntrada(this)">
+                        <input placeholder="Cor de fundo da pergunta" name="cor-pergunta" id="input-box" onchange="is_hexadecimal(this)" minlength="7" maxlength="7" value="#" required oninvalid="verificarEntrada(this)">
                     </div>
                     <label class="input-title">Resposta correta</label>
                     <div class="input-box">
-                        <input placeholder="Resposta correta" id="input-box" name="resposta-correta-${i}" required>
-                        <input placeholder="URL da imagem" id="input-box" type="url" name="url-resposta-correta-${i}" required>
+                        <input placeholder="Resposta correta" id="input-box" name="Resposta Correta ${i+1}" required oninvalid="verificarEntrada(this)">
+                        <input placeholder="URL da imagem" id="input-box" type="url" name="Imagem Resposta Correta ${i+1}" required oninvalid="verificarEntrada(this)">
                     </div>
                     <label class="input-title">Respostas Incorretas</label>
                     <div class="input-box">
-                        <input placeholder="Resposta incorreta 1" id="input-box" name="resposta-incorreta-1-${i}" required>
-                        <input placeholder="URL da imagem 1" id="input-box" type="url" name="url-resposta-incorreta-1-${i}" required>
+                        <input placeholder="Resposta incorreta 1" id="input-box" name="Resposta Incorreta 1 ${i+1}" required oninvalid="verificarEntrada(this)">
+                        <input placeholder="URL da imagem 1" id="input-box" type="url" name="Imagem Resposta Incorreta 1 ${i+1}" required oninvalid="verificarEntrada(this)">
                     </div>
                     <div class="input-box">
-                        <input placeholder="Resposta incorreta 2" id="input-box" name="resposta-incorreta-2-${i}">
-                        <input placeholder="URL da imagem 2" id="input-box" type="url" name="url-resposta-incorreta-2-${i}">
+                        <input placeholder="Resposta incorreta 2" id="input-box" name="Resposta Incorreta 2 ${i+1}" oninvalid="verificarEntrada(this)">
+                        <input placeholder="URL da imagem 2" id="input-box" type="url" name="Imagem Resposta Incorreta 2 ${i+1}" oninvalid="verificarEntrada(this)">
                     </div>
                     <div class="input-box">
-                        <input placeholder="Resposta incorreta 3" id="input-box" name="resposta-incorreta-3-${i}">
-                        <input placeholder="URL da imagem 3" id="input-box" type="url" name="url-resposta-incorreta-3-${i}">
+                        <input placeholder="Resposta incorreta 3" id="input-box" name="Resposta Incorreta 3 ${i+1}" oninvalid="verificarEntrada(this)">
+                        <input placeholder="URL da imagem 3" id="input-box" type="url" name="Imagem Resposta Incorreta 3 ${i+1}" oninvalid="verificarEntrada(this)">
                     </div>
                 </div>`
     }
@@ -88,7 +90,7 @@ function criarTelaPerguntas(){
                                 <button type="submit" class="botao-prosseguir">
                                 Prosseguir para criar níveis
                                 </button>
-                                <button type="button" class="botao-voltar" onclick="subirCriação_1()">
+                                <button type="button" class="botao-voltar" onclick="voltarTela('.tela-infos-basicas', '.tela-perguntas')">
                                 Voltar
                                 </button>
                                 </form>`
@@ -105,11 +107,11 @@ function criarTelaNiveis(){
             Nível${i+1}
             <ion-icon name="create-outline" class="pencil"></ion-icon>
             </button>
-            <div class="conteudo-pergunta">
-                <input placeholder="Título do nível" id="input-box" name="titulo-nivel" type="text" minlength="10" required>
-                <input placeholder="% de acerto mínima" id="input-box" name="porcentagem" type="number" min="0" max="100" required>
-                <input placeholder="URL da imagem do nível" id="input-box" name="url-nivel" type="url" required>
-                <input placeholder="Descrição do nível" id="input-box" name="descricao-nivel" type="text" minlength="30">
+            <div class="conteudo-pergunta" name="container-inputs">
+                <input placeholder="Título do nível" id="input-box" name="Título do Nível" type="text" minlength="10" required oninvalid="verificarEntrada(this)">
+                <input placeholder="% de acerto mínima" id="input-box" name="Porcentagem do Nível" type="number" min="0" max="100" maxlength="3" required oninvalid="verificarEntrada(this)">
+                <input placeholder="URL da imagem do nível" id="input-box" name="URL da Imagem do Nível" type="url" required oninvalid="verificarEntrada(this)">
+                <input placeholder="Descrição do nível" id="input-box" name="Descrição do Nível" type="text" minlength="30" oninvalid="verificarEntrada(this)">
             </div>`
     }
 
@@ -117,9 +119,9 @@ function criarTelaNiveis(){
                             <label class="instrucao">Prosseguir para Tela Final</label>
                             ${niveis}
                             <button type="submit" class="botao-prosseguir">
-                            Prosseguir para criar níveis
+                            Prosseguir para Tela Final
                             </button>
-                            <button type="button" class="botao-voltar" onclick="subirCriação_1()">
+                            <button type="button" class="botao-voltar" onclick="voltarTela('.tela-perguntas', '.tela-niveis')">
                             Voltar
                             </button>
                             </form>`
@@ -140,13 +142,13 @@ function criarTelaFinal(){
                             <div class="botao-de-prosseguir">
                                 <p class="texto-botao-prosseguir">Acessar Quizz</p>
                             </div>
-                            <div class="botao-voltar" onclick="estadoInicial()">
-                                <button type="button" class="voltar">Voltar</button>
+                            <div class="botao-voltar" onclick="voltarTela('.corpo-pagina-inicial', '.tela-final')">
+                                <button type="button" class="voltar">Voltar para home</button>
                             </div>
                         </div>`
 }
 function conferirPresença(){
-    const niveis = document.getElementsByName("porcentagem");
+    const niveis = document.getElementsByName("Porcentagem do Nível");
     let possui = false;
     for (let i = 0; i < niveis.length; i++){
         if (niveis[i].value === "0"){
@@ -154,7 +156,7 @@ function conferirPresença(){
         }
     }
     if (!possui){
-        alert("uma das opções deve ser 0%");
+        alert("Uma das opções deve ser 0%");
     }
     else{
         submeterNiveis();
@@ -171,37 +173,37 @@ function submeterPerguntas(){
 }
 function respostasSubmetidas(index_pergunta){
     let retorno = []
-    const resposta_correta = document.getElementsByName(`resposta-correta-${index_pergunta}`)[0].value;
-    const url_resposta_correta = document.getElementsByName(`url-resposta-correta-${index_pergunta}`)[0].value;
-    const resposta_incorreta1 = document.getElementsByName(`resposta-incorreta-1-${index_pergunta}`)[0].value;
-    const url_resposta_incorreta1 = document.getElementsByName(`url-resposta-incorreta-1-${index_pergunta}`)[0].value;
-    const resposta_incorreta2 = document.getElementsByName(`resposta-incorreta-2-${index_pergunta}`)[0].value;
-    const url_resposta_incorreta2 = document.getElementsByName(`url-resposta-incorreta-2-${index_pergunta}`)[0].value;
-    const resposta_incorreta3 = document.getElementsByName(`resposta-incorreta-3-${index_pergunta}`)[0].value;
-    const url_resposta_incorreta3 = document.getElementsByName(`url-resposta-incorreta-3-${index_pergunta}`)[0].value;
+    const resposta_correta = document.getElementsByName(`Resposta Correta ${index_pergunta + 1}`)[0].value;
+    const url_resposta_correta = document.getElementsByName(`Imagem Resposta Correta ${index_pergunta + 1}`)[0].value;
+    const resposta_incorreta1 = document.getElementsByName(`Resposta Incorreta 1 ${index_pergunta + 1}`)[0].value;
+    const url_resposta_incorreta1 = document.getElementsByName(`Imagem Resposta Incorreta 1 ${index_pergunta + 1}`)[0].value;
+    const resposta_incorreta2 = document.getElementsByName(`Resposta Incorreta 2 ${index_pergunta + 1}`)[0].value;
+    const url_resposta_incorreta2 = document.getElementsByName(`Imagem Resposta Incorreta 2 ${index_pergunta + 1}`)[0].value;
+    const resposta_incorreta3 = document.getElementsByName(`Resposta Incorreta 3 ${index_pergunta + 1}`)[0].value;
+    const url_resposta_incorreta3 = document.getElementsByName(`Imagem Resposta Incorreta 3 ${index_pergunta + 1}`)[0].value;
     retorno = [{text: resposta_correta, image: url_resposta_correta, isCorrectAnswer: true},
                {text: resposta_incorreta1, image: url_resposta_incorreta1, isCorrectAnswer: false}];
-    if (resposta_incorreta2 !== ""){
+    if (resposta_incorreta2 !== "" || isUrl(url_resposta_incorreta2) === false){
         retorno.push({text: resposta_incorreta2, image: url_resposta_incorreta2, isCorrectAnswer: false});
     }
-    if (resposta_incorreta3 !== ""){
+    if (resposta_incorreta3 !== ""  || isUrl(url_resposta_incorreta2) === false){
         retorno.push({text: resposta_incorreta3, image: url_resposta_incorreta3, isCorrectAnswer: false});
     };
     return retorno;
 }
 function submeterNiveis(){
     let niveis = [];
-    let titulos = document.getElementsByName("titulo-nivel");
-    let imagens = document.getElementsByName("url-nivel");
-    let descricao = document.getElementsByName("descricao-nivel");
-    let porcentagens = document.getElementsByName("porcentagem");
+    let titulos = document.getElementsByName("Título do Nível");
+    let imagens = document.getElementsByName("URL da Imagem do Nível");
+    let descricao = document.getElementsByName("Descrição do Nível");
+    let porcentagens = document.getElementsByName("Porcentagem do Nível");
 
     for (let i = 0; i < titulos.length; i++){
         niveis.push({title: titulos[i].value, image: imagens[i].value, text: descricao[i].value, minValue: Number(porcentagens[i].value)})
     }
     infoBasica.levels = niveis;
     const requisition = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", infoBasica);
-    requisition.then(() => console.log("enviado"));
+    requisition.then();
 }
 function is_hexadecimal(elemento){
     let str = elemento.value;
@@ -229,3 +231,25 @@ function colapsarPergunta(elemento){
         content.style.display = "flex";
     }
 }
+function verificarEntrada(input){
+    let elementoColapsavel = input.parentNode;
+    let pai = elementoColapsavel.nodeName;
+    if (pai !== "container-inputs"){
+        elementoColapsavel = input.parentNode.parentNode;
+    }
+    const anterior = elementoColapsavel.previousElementSibling;
+    colapsarPergunta(anterior);
+    alert(`Por favor, Insira dados válidos no campo ${input.name}`);
+}
+function voltarTela(alvo, atual){
+    const destino = document.querySelector(alvo);
+    const presente = document.querySelector(atual);
+    const topo = document.querySelector(".barra-topo");
+    destino.classList.remove("hidden");
+    presente.classList.add("hidden");
+    topo.scrollIntoView({block: "center"});
+}
+function isUrl(s) {
+    var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
+    return regexp.test(s);
+ }
