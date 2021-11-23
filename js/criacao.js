@@ -11,7 +11,7 @@ function criarTelaInicial(){
     caixaBotao.innerHTML = 
     `<div class="botao-criacao">
     <p class="aviso-quizz">Você não criou nenhum quizz ainda:(</p>
-    <button class="criar" onclick="trocarPagina()">Criar Quizz</button>
+    <button class="criar" onclick="trocarPagina()" data-identifier="create-quizz">Criar Quizz</button>
     </div>`
     }
     else {
@@ -19,7 +19,7 @@ function criarTelaInicial(){
     paginaInicial.innerHTML += 
     `<div class="botao-criacao">
     <span>Seus Quizzes</span>
-    <button class="criar possuiQuiz" onclick="trocarPagina()"><ion-icon name="add-circle"></ion-icon></button>
+    <button class="criar possuiQuiz" onclick="trocarPagina()" data-identifier="create-quizz"><ion-icon name="add-circle"></ion-icon></button>
     </div>`
     paginaInicial.innerHTML += tempPagina;
     }
@@ -61,11 +61,11 @@ function criarTelaPerguntas(){
     let perguntas = "";
     for (let i = 0; i < infoBasica.questions.length; i++){
         perguntas +=
-            `<button type="button" class="dados-quizz_2 colapsavel" onclick="colapsarPergunta(this)">
+            `<button type="button" class="dados-quizz_2 colapsavel" onclick="colapsarPergunta(this)" data-identifier="expand">
             Pergunta ${i+1}
             <ion-icon name="create-outline" class="pencil"></ion-icon>
             </button>
-                <div class="conteudo-pergunta" name="container-inputs">
+                <div class="conteudo-pergunta" name="container-inputs"  data-identifier="question" >
                     <div class="input-box">
                         <input placeholder="Texto da Pergunta" name="Título da Pergunta" id="input-box" minlength="20" required oninvalid="verificarEntrada(this)">
                         <input placeholder="Cor de fundo da pergunta" name="Cor da Pergunta" id="input-box" onchange="is_hexadecimal(this)" minlength="7" maxlength="7" value="#" required oninvalid="verificarEntrada(this)">
@@ -109,11 +109,11 @@ function criarTelaNiveis(){
     let niveis = "";
     for (let i = 0; i < infoBasica.levels.length; i++){
         niveis += 
-            `<button type="button" class="dados-quizz_2 colapsavel" onclick="colapsarPergunta(this)">
+            `<button type="button" class="dados-quizz_2 colapsavel" onclick="colapsarPergunta(this)" data-identifier="expand">
             Nível${i+1}
             <ion-icon name="create-outline" class="pencil"></ion-icon>
             </button>
-            <div class="conteudo-pergunta" name="container-inputs">
+            <div class="conteudo-pergunta" name="container-inputs" data-identifier="level">
                 <input placeholder="Título do nível" id="input-box" name="Título do Nível" type="text" minlength="10" required oninvalid="verificarEntrada(this)">
                 <input placeholder="% de acerto mínima" id="input-box" name="Porcentagem do Nível" type="number" min="0" max="100" maxlength="3" required oninvalid="verificarEntrada(this)">
                 <input placeholder="URL da imagem do nível" id="input-box" name="URL da Imagem do Nível" type="url" required oninvalid="verificarEntrada(this)">

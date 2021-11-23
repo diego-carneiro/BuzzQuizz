@@ -32,7 +32,7 @@ function imprimirMeusQuizes(response) {
     const caixaQuizes = document.querySelector(".criar-quizz");
     
     caixaQuizes.innerHTML +=
-        `<div class="quizzes-de-outros" onclick="irPraTelaQuiz(${meuQuizz.id})">
+        `<div class="quizzes-de-outros" onclick='irPraTelaQuiz(${meuQuizz.id})' data-identifier="quizz-card">
             <img src="${meuQuizz.image}"/>
             <div class="sombra-imagem"></div>
             <span>${meuQuizz.title}</span>
@@ -49,7 +49,7 @@ function imprimirQuizes(resposta) {
     const caixaQuizes = document.querySelector(".caixa-quizz");
     listaQuizes.map(quiz =>
         caixaQuizes.innerHTML +=
-        `<div class="quizzes-de-outros" onclick="irPraTelaQuiz(${quiz.id})">
+        `<div class="quizzes-de-outros" onclick='irPraTelaQuiz(${quiz.id})' data-identifier="quizz-card">
             <img src="${quiz.image}"/>
             <div class="sombra-imagem"></div>
             <span>${quiz.title}</span>
@@ -64,7 +64,7 @@ function irPraTelaQuiz(id) {
     quizAtualObj.then(telaQuiz);
     quizAtualObj.catch(erroAxios);
 }
-function telaQuiz(resposta){
+function telaQuiz(resposta) {
     const quizAtual = resposta.data;
     levels = resposta.data.levels;
 
@@ -94,8 +94,8 @@ function telaQuiz(resposta){
                 ${caixaRespostas}
 
                 <div class="container-fim-quizz hidden">
-                    <div class="container-resultado">
-                        <h1 class="tituloFimQuizz">${porcentagemDeAcertos}% de acerto: ${quizAtual.levels[0].title}</h1>
+                    <div class="container-resultado" data-identifier="quizz-result">
+                        <h1 class="tituloFimQuizz" >${porcentagemDeAcertos}% de acerto: ${quizAtual.levels[0].title}</h1>
                     </div>
                     <div class="imagem-e-descricao">
                         <img src=${quizAtual.levels[0].image}"/>
@@ -139,7 +139,7 @@ function mostrarRespostasIndividuais(respostas, qtdOpcoes) {
     let retornoString = "";
     for (let i = 0; i < respostas.length; i++) {
         retorno.push(
-            `<div class="container-resposta-indivual ${(respostas[i].isCorrectAnswer === true) ? "resposta-correta" : "resposta-errada"}" onclick="selecionarResposta(this, ${qtdOpcoes})">
+            `<div class="container-resposta-indivual ${(respostas[i].isCorrectAnswer === true) ? "resposta-correta" : "resposta-errada"}" onclick="selecionarResposta(this, ${qtdOpcoes})" data-identifier="answer">
             <img src="${respostas[i].image}"/>
             <span>${respostas[i].text}</span>
         </div>`);
@@ -189,16 +189,21 @@ function finalizacaoQuizz (porcentagem){
     
     const ultimoLevel = levels.length - 1;
     let level;
+    console.log(ultimoLevel);
     for(let i=ultimoLevel; i>=0; i--){
+        console.log(levels[i]);
         if(porcentagem >= levels[i].minValue){
           level = levels[i]; 
+          console.log(levels[i]);
 
           break;
         }    
     }
+    console.log(level);
 
     const titleQuizz = fimQuizz.querySelector(".tituloFimQuizz");
     titleQuizz.innerHTML = `${porcentagem}% de acerto: ${level.title}`;
+    console.log(porcentagem);
 
     const imgFimQuizz = fimQuizz.querySelector("img"); 
     imgFimQuizz.setAttribute("src",level.image);
