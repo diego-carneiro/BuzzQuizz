@@ -33,7 +33,7 @@ function imprimirMeusQuizes(response) {
     const caixaQuizes = document.querySelector(".criar-quizz");
     
     caixaQuizes.innerHTML +=
-        `<div class="quizzes-de-outros" onclick="irPraTelaQuiz(${meuQuizz.id}) data-identifier="quizz-card"">
+        `<div class="quizzes-de-outros" onclick="irPraTelaQuiz(${meuQuizz.id}) data-identifier="quizz-card">
             <img src="${meuQuizz.image}"/>
             <div class="sombra-imagem"></div>
             <span>${meuQuizz.title}</span>
