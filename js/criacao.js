@@ -15,7 +15,6 @@ function criarTelaInicial(){
     </div>`
     }
     else {
-<<<<<<< HEAD
     paginaInicial.innerHTML = "";
     paginaInicial.innerHTML += 
     `<div class="botao-criacao">
@@ -23,9 +22,6 @@ function criarTelaInicial(){
     <button class="criar possuiQuiz" onclick="trocarPagina()"><ion-icon name="add-circle"></ion-icon></button>
     </div>`
     paginaInicial.innerHTML += tempPagina;
-=======
-    caixaBotao.innerHTML = ""
->>>>>>> 05de14202aa1559ea4c1819c562906fd7ace9b74
     }
 }
 function trocarPagina(){
